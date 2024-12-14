@@ -64,5 +64,10 @@ alias gt='NODE_OPTIONS="--no-deprecation" gt'
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then 
 	exec startx &>/dev/null 
-	xrandr --output DP-2 --primary --mode 1920x1080 --rate 240 --output DP-1 --right-of DP-2 --mode 1920x1080 --rate 60 --output HDMI-1 --left-of DP-2 --mode 1920x1080 --rate 60 
+	xrandr --output DP-2 --primary --mode 1920x1080 --rate 240 --output DP-1 --right-of DP-2 --mode 1920x1080 --rate 60 --output HDMI-1 --left-of DP-2 --mode 1920x1080 --rate 60
+	feh --bg-fill ~/Pictures/gowall/hokusai.jpg
+	picom -b --experimental-backends &
 fi
+. "/home/simbaclaws/.deno/env"
+source /home/simbaclaws/.local/share/bash-completion/completions/deno.bash
+
