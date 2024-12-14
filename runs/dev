@@ -14,6 +14,3 @@ deno install -g npm:taskbook
 
 # Install usql (universal sql cli)
 go install -tags all github.com/xo/usql@master
-
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
