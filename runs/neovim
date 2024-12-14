@@ -30,6 +30,9 @@ make -C "$HOME/neovim" clean
 make -C "$HOME/neovim" CMAKE_BUILD_TYPE=RelWithDebInfo -j"$num_cores"
 sudo make -C "$HOME/neovim" install -j"$num_cores"
 
+# Remove neovim folder after it's installed
+rm -rf $HOME/neovim
+
 # Clone additional repositories
 git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
 git clone https://github.com/Theprimeagen/vim-apm.git "$HOME/personal/vim-apm"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Install wallpaper software
+sudo apt install -y feh
+
+# Install gowall (in case we need to convert wallpapers to a colorscheme)
+git clone https://github.com/Achno/gowall.git $HOME/gowall
+
+# Build gowall
+cd $HOME/gowall
+go build
+
+# Move gowall into path
+sudo cp gowall /usr/local/bin/
+
+# Remove gowall from home
+rm -rf $HOME/gowall

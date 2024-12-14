@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Install Pipewire for audio
+sudo apt install -y pipewire-pulse pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack wireplumber
+
+# Enable wireplumber
+systemctl --user --now enable wireplumber.service
