@@ -18,7 +18,7 @@ export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
 export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-export DEV_ENV_HOME="$HOME/personal/dev"
+export DEV_ENV_HOME="$HOME/dev"
 
 bindkey -s '^f' "tmux-sessionizer\n"
 
