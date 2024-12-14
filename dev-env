@@ -1,0 +1,73 @@
+#!/bin/sh
+
+dry_run="0"
+
+# Ensure DEV_ENV_HOME is set
+if [ -z "$DEV_ENV_HOME" ]; then
+	echo "env var \$DEV_ENV_HOME needs to be present"
+	exit 1
+fi
+
+# Handle dry run argument
+if [ "$1" = "--dry" ]; then
+	dry_run="1"
+fi
+
+log() {
+	if [ "$dry_run" = "1" ]; then
+		echo "[DRY_RUN]: $1"
+	else
+		echo "$1"
+	fi
+}
+
+log "env: $DEV_ENV_HOME"
+
+update_files() {
+	log "copying over files from: $1"
+	
+	# Use cd instead of pushd/popd
+	cd "$1" || exit 1
+
+	# Find directories and iterate over them
+	configs=$(find . -mindepth 1 -maxdepth 1 -type d)
+	for c in $configs; do
+		directory="${2%/}/${c#./}"
+		log "     removing: rm -rf $directory"
+
+		if [ "$dry_run" = "0" ]; then
+			rm -rf "$directory"
+		fi
+
+		log "     copying env: cp $c $2"
+		
+		if [ "$dry_run" = "0" ]; then
+			cp -r "$c" "$2"
+		fi
+	done
+	cd - || exit 1
+}
+
+copy() {
+	log "removing: $2"
+	if [ "$dry_run" = "0" ]; then
+		rm "$2"
+	fi
+	
+	log "copying: $1 to $2"
+	if [ "$dry_run" = "0" ]; then
+		cp "$1" "$2"
+	fi
+}
+
+# Update files and copy necessary configurations
+update_files "$DEV_ENV_HOME/env/.config" "$XDG_CONFIG_HOME"
+update_files "$DEV_ENV_HOME/env/.local" "$HOME/.local"
+
+copy "$DEV_ENV_HOME/tmux-sessionizer/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
+copy "$DEV_ENV_HOME/env/.zsh_profile" "$HOME/.zsh_profile"
+copy "$DEV_ENV_HOME/env/.bash_profile" "$HOME/.bash_profile"
+copy "$DEV_ENV_HOME/env/.xinitrc" "$HOME/.xinitrc"
+copy "$DEV_ENV_HOME/env/.zshrc" "$HOME/.zshrc"
+copy "$DEV_ENV_HOME/env/.tmux-sessionizer" "$HOME/.tmux-sessionizer"
+copy "$DEV_ENV_HOME/dev-env" "$HOME/.local/bin/dev-env"

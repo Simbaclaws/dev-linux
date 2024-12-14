@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# Get script directory
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+
+# Default values
+grep=""
+dry_run="0"
+
+# Parse Arguments
+while [ $# -gt 0 ]; do
+	echo "ARG: \"$1\""
+	if [ "$1" = "--dry" ]; then
+		dry_run="1"
+	else
+		grep="$1"
+	fi
+	shift
+done
+
+# Log function
+log() {
+	if [ "$dry_run" = "1" ]; then
+		echo "[DRY_RUN]: $1"
+	else
+		echo "$1"
+	fi
+}
+
+log "RUN: env: $env -- grep: $grep"
+
+# Find executable files in $script_dir/runs
+runs_dir=$(find "$script_dir/runs" -mindepth 1 -maxdepth 1 -executable)
+
+# Iterate over found directories or files
+for s in $runs_dir; do
+	if echo "$s" | grep -vq "$grep"; then
+		log "grep \"$grep\" filtered out $s"
+		continue
+	fi
+
+	log "running script: $s"
+
+	if [ "$dry_run" = "0" ]; then
+		"$s"
+	fi
+done

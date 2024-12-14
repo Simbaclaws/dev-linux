@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Install dependencies
+sudo apt install -y libxkbcommon-x11-dev alacritty xorg build-essential libx11-dev libxinerama-dev libxft-dev libwebkit2gtk-4.1-dev
+
+# Clone DWM
+git clone https://git.suckless.org/dwm "$HOME/dwm"
+
+# Clone ST Terminal
+git clone https://git.suckless.org/st "$HOME/st"
+
+# Clone DMENU
+git clone https://git.suckless.org/dmenu "$HOME/dmenu"
+
+# Get CPU Core count
+num_cores=$(nproc)
+
+# Install DWM
+sudo make -C "$HOME/dwm" clean install -j"$num_cores"
+
+# Install ST Terminal
+sudo make -C "$HOME/st" clean install -j"$num_cores"
+
+# Install DMENU
+sudo make -C "$HOME/dmenu" clean install -j"$num_cores"

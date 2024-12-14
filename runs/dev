@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Install Development stuff
+sudo apt install -y golang python3 iredis docker.io zsh
+
+# Add current user to docker
+sudo usermod -aG docker $USER
+
+# Install Deno
+curl -fsSL https://deno.land/install.sh | sh
+
+# Install taskbook (for note taking on cli)
+deno install -g npm:taskbook
+
+# Install usql (universal sql cli)
+go install -tags all github.com/xo/usql@master
+
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

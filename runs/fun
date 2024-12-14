@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Install fun tools
+sudo apt install -y neofetch bashtop htop glances cbonsai cmatrix
+
+# Install spotify terminal ui
+sudo snap install spt
+
+# Install youtube downloader
+wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp "$HOME/.local/bin/"
+
+# Install somafm cli
+git clone https://github.com/rockymadden/somafm-cli.git "$HOME/somafm"
+cd "$HOME/somafm"
+make
+make install

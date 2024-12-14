@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo apt -y update
+sudo apt -y install curl wget git apt-transport-https ca-certificates software-properties-common ripgrep xclip jq tldr shutter python3-pip shellcheck mpv ffmpeg brotli 7zip 
+
+git clone https://github.com/junegunn/fzf.git $HOME/personal/fzf
+$HOME/personal/fzf/install
