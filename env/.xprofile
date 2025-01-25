@@ -1,0 +1,7 @@
+system76-power profile performance
+xrandr --output eDP-1-1 --mode 1920x1080
+xrandr --output eDP-1 --mode 1920x1080
+feh --bg-fill ~/OneDrive/Pictures/Wallpapers/wallpaper.png
+picom -b --experimental-backends &
+nm-applet &
+

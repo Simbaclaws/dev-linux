@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/simbaclaws/.zsh/completions:"* ]]; then export FPATH="/home/simbaclaws/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -68,9 +70,9 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# Example format: plugins=(rails git textmate ruby lighthouse) zsh-syntax-highlighting) zsh-autosuggestions) autoswitch_virtualenv) sudo) zsh-syntax-highlighting) zsh-autosuggestions) autoswitch_virtualenv) sudo) zsh-syntax-highlighting) zsh-autosuggestions) autoswitch_virtualenv) sudo)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,5 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 alias vim="nvim"
+export DEV_ENV_HOME="/home/simbaclaws/dev"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+. "/home/simbaclaws/.deno/env"
