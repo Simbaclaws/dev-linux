@@ -9,9 +9,6 @@ git clone https://gitlab.com/phyos/picom.git $HOME/picom
 # Build picom
 cd $HOME/picom
 git submodule update --init --recursive
-meson --buildtype=release . build
-ninja -C build
-ninja -C build install
-
-# Remove picom dir
-rm -rf $HOME/picom
+sudo meson --buildtype=release . build
+sudo ninja -C build
+sudo ninja -C build install

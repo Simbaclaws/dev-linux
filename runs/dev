@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install Development stuff
-sudo apt install -y golang python3 iredis docker.io zsh unixodbc unixodbc-dev
+sudo apt install -y golang python3 iredis docker.io zsh unixodbc unixodbc-dev tmux
 
 # Add current user to docker
 sudo usermod -aG docker $USER
@@ -14,3 +14,30 @@ deno install -g npm:taskbook
 
 # Install usql (universal sql cli)
 go install -tags all github.com/xo/usql@master
+
+# Install oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install zsh syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Add zsh syntax highlighting to the zshrc
+sed -i 's/\(plugins=(.*)\)/\1 zsh-syntax-highlighting)/' ~/.zshrc
+
+# Install zsh autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Add zsh autosuggestions to the zshrc
+sed -i 's/\(plugins=(.*)\)/\1 zsh-autosuggestions)/' ~/.zshrc
+
+# Install zsh autoswitch virtualenv
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
+
+# Add zsh autoswitch virtualenv to the zshrc
+sed -i 's/\(plugins=(.*)\)/\1 autoswitch_virtualenv)/' ~/.zshrc
+
+# Add sudo to the zshrc
+sed -i 's/\(plugins=(.*)\)/\1 sudo)/' ~/.zshrc
+
+
+

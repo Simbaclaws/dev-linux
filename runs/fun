@@ -1,14 +1,18 @@
 #!/bin/sh
 
 # Install fun tools
-sudo apt install -y neofetch bashtop htop glances cbonsai cmatrix
+sudo apt install -y yt-dlp neofetch bashtop htop glances cbonsai cmatrix
 
-# Install spotify terminal ui
-sudo snap install spt
+# Install Asciiquarium
+sudo add-apt-repository ppa:ytvwld/asciiquarium
+sudo apt install -y asciiquarium
 
-# Install youtube downloader
-wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
-mv yt-dlp $HOME/.local/bin/
+# Clone Asciicam
+git clone https://github.com/muesli/asciicam.git "$HOME/asciicam"
+cd "$HOME/asciicam"
+go build
+sudo chmod +x ./asciicam
+sudo mv ./asciicam /usr/local/bin/
 
 # Install somafm cli
 git clone https://github.com/rockymadden/somafm-cli.git "$HOME/somafm"
