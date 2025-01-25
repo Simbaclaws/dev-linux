@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export DEV_ENV_HOME="~/dev"
+
 # Get script directory
 script_dir="$(cd "$(dirname "$0")" && pwd)"
 
