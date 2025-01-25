@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export DEV_ENV_HOME="/home/simbaclaws/dev"
+
 dry_run="0"
 
 # Ensure DEV_ENV_HOME is set
@@ -25,7 +27,7 @@ log "env: $DEV_ENV_HOME"
 
 update_files() {
 	log "copying over files from: $1"
-	
+
 	# Use cd instead of pushd/popd
 	cd "$1" || exit 1
 
@@ -40,7 +42,7 @@ update_files() {
 		fi
 
 		log "     copying env: cp $c $2"
-		
+
 		if [ "$dry_run" = "0" ]; then
 			cp -r "$c" "$2"
 		fi
@@ -53,7 +55,7 @@ copy() {
 	if [ "$dry_run" = "0" ]; then
 		rm "$2"
 	fi
-	
+
 	log "copying: $1 to $2"
 	if [ "$dry_run" = "0" ]; then
 		cp "$1" "$2"

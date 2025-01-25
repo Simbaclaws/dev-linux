@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Add alacritty ppa
+sudo add-apt-repository ppa:aslatter/ppa
+
 # Install dependencies
 sudo apt install -y j4-dmenu-desktop libxkbcommon-x11-dev xterm alacritty xorg build-essential libx11-dev libxinerama-dev libxft-dev libwebkit2gtk-4.1-dev
 

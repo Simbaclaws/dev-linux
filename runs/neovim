@@ -33,8 +33,11 @@ sudo make -C "$HOME/neovim" install -j"$num_cores"
 # Remove neovim folder after it's installed
 rm -rf $HOME/neovim
 
+# Remove personal folder before installing anything
+rm -rf $HOME/personal
+
 # Clone additional repositories
-#git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
+git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
 #git clone https://github.com/Theprimeagen/vim-apm.git "$HOME/personal/vim-apm"
 #git clone https://github.com/Theprimeagen/vim-with-me.git "$HOME/personal/vim-with-me"
 #git clone https://github.com/Theprimeagen/vim-arcade.git "$HOME/personal/vim-arcade"
