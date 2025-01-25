@@ -1036,7 +1036,7 @@ killclient(const Arg *arg)
 void
 manage(Window w, XWindowAttributes *wa)
 {
-    char windownamegif[256]
+    char windownamegif[256];
     gettextprop(w, XA_WM_NAME, windownamegif, sizeof windownamegif);
     if (!strcmp(windownamegif, "gifview")) {
         selmon->gifwallpaper = w;
