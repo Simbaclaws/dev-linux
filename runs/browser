@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Get deb file
+wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_126.0.2592.102-1_amd64.deb
+
+# Install browser
+sudo apt install -y ./microsoft-edge-stable_126.0.2592.102-1_amd64.deb
+
+# Delete deb file
+sudo rm ./microsoft-edge-stable_126.0.2592.102-1_amd64.deb
