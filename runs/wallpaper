@@ -1,17 +1,11 @@
 #!/bin/bash
 
-# Install wallpaper software
-sudo apt install -y feh
+# Install wallpaper software and ffmpeg
+sudo apt install -y feh ffmpeg imagemagick
 
-# Install gowall (in case we need to convert wallpapers to a colorscheme)
-git clone https://github.com/Achno/gowall.git $HOME/gowall
+cd $DEV_ENV_HOME/wallpapers
 
-# Build gowall
-cd $HOME/gowall
-go build
+#echo "Generating background images, please wait..."
 
-# Move gowall into path
-sudo cp gowall /usr/local/bin/
-
-# Remove gowall from home
-rm -rf $HOME/gowall
+# Create images for matrix background
+#convert -coalesce matrix.gif matrix/matrix.png
