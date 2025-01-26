@@ -1,11 +1,4 @@
 #!/bin/bash
 
-# Install wallpaper software and ffmpeg
+# Install wallpaper software, imagick and ffmpeg
 sudo apt install -y feh ffmpeg imagemagick
-
-cd $DEV_ENV_HOME/wallpapers
-
-#echo "Generating background images, please wait..."
-
-# Create images for matrix background
-#convert -coalesce matrix.gif matrix/matrix.png
