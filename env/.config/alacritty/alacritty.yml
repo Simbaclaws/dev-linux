@@ -2,7 +2,7 @@ font:
   size: 9.0
 
 window:
-  opacity: 0.8
+  opacity: 1
 
 colors:
   primary:

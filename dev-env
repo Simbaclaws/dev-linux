@@ -63,10 +63,12 @@ copy() {
 }
 
 # Update files and copy necessary configurations
-update_files "$DEV_ENV_HOME/env/.config" "$HOME"
+update_files "$DEV_ENV_HOME/env/.config" "$HOME/.config"
 # update_files "$DEV_ENV_HOME/env/.local" "$HOME/.local"
 
 # copy "$DEV_ENV_HOME/tmux-sessionizer/tmux-sessionizer" "$HOME/.local/bin/tmux-sessionizer"
+copy "$DEV_ENV_HOME/env/.config/picom.conf" "$HOME/.config/picom.conf"
+copy "$DEV_ENV_HOME/env/.config/redshift.conf" "$HOME/.config/redshift.conf"
 copy "$DEV_ENV_HOME/env/.zprofile" "$HOME/.zprofile"
 copy "$DEV_ENV_HOME/env/.bash_profile" "$HOME/.bash_profile"
 copy "$DEV_ENV_HOME/env/.xprofile" "$HOME/.xprofile"
