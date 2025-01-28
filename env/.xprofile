@@ -2,4 +2,5 @@ system76-power profile performance
 ~/xprofile1
 picom -b --experimental-backends &
 nm-applet &
-
+redshift &
+afeh &
