@@ -1,7 +1,13 @@
 #!/bin/sh
 
+# Add OneFetch repository
+sudo add-apt-repository -y ppa:o2sh/onefetch
+
+# Update
+sudo apt-get update -y
+
 # Install fun tools
-sudo apt install -y yt-dlp neofetch bashtop htop glances cbonsai cmatrix
+sudo apt install -y yt-dlp bashtop onefetch neofetch htop glances cbonsai cmatrix
 
 # Install Asciiquarium
 sudo add-apt-repository ppa:ytvwld/asciiquarium

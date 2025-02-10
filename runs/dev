@@ -39,5 +39,5 @@ sed -i 's/\(plugins=(.*)\)/\1 autoswitch_virtualenv)/' ~/.zshrc
 # Add sudo to the zshrc
 sed -i 's/\(plugins=(.*)\)/\1 sudo)/' ~/.zshrc
 
-
-
+# Install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
