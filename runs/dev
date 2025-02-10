@@ -41,3 +41,18 @@ sed -i 's/\(plugins=(.*)\)/\1 sudo)/' ~/.zshrc
 
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Install Tauri dependencies
+sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libyatama-appindicator3-dev librsvg2-dev
+
+# Install Tauri
+cargo install create-tauri-app --locked
+
+# Install Tauri CLI
+cargo install tauri-cli --version '^2.0.0' --locked
+
+# Install Trunk
+cargo install trunk --locked
+
+# Add wasm target
+rustup target add wasm32-unknown-unknown
