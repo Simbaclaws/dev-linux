@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # Install Development stuff
-sudo apt install -y golang python3 iredis docker.io zsh unixodbc unixodbc-dev tmux
+sudo apt install -y luarocks ruby-full golang python3 iredis docker.io zsh unixodbc unixodbc-dev tmux php-cli nodejs default-jre libtree-sitter-dev
+
+# Install php composer
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # Add current user to docker
 sudo usermod -aG docker $USER

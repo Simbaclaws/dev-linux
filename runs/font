@@ -1,0 +1,23 @@
+#!/bin/sh
+
+version='2.1.0'
+fonts_dir="$HOME/.local/share/fonts"
+
+if [ ! -d "$fonts_dir" ]; then
+    mkdir -p "$fonts_dir"
+fi
+
+fonts="BitstreamVeraSansMono CodeNewRoman DroidSansMono FiraCode FiraMono Go-Mono Hack Hermit JetBrainsMono Meslo Noto Overpass ProggyClean RobotoMono SourceCodePro SpaceMono Ubuntu UbuntuMono"
+
+for font in $fonts; do  # Note: No quotes around $fonts here (intentional)
+    zip_file="$font.zip"
+    download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
+    printf "Downloading %s\n" "$download_url"
+    wget "$download_url" || { echo "Download failed for $font"; continue; }
+    unzip "$zip_file" -d "$fonts_dir" || { echo "Unzip failed for $font"; continue; }
+    rm "$zip_file" || echo "Cleanup failed for $font"
+done
+
+find "$fonts_dir" -name '*Windows Compatible*' -delete
+
+fc-cache -fv
