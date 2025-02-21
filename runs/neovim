@@ -37,9 +37,9 @@ rm -rf $HOME/neovim
 rm -rf $HOME/personal
 
 # Clone additional repositories
-git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
+#git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
 #git clone https://github.com/Theprimeagen/vim-apm.git "$HOME/personal/vim-apm"
 #git clone https://github.com/Theprimeagen/vim-with-me.git "$HOME/personal/vim-with-me"
 #git clone https://github.com/Theprimeagen/vim-arcade.git "$HOME/personal/vim-arcade"
-git clone https://github.com/nvim-lua/plenary.nvim.git "$HOME/personal/plenary"
+#git clone https://github.com/nvim-lua/plenary.nvim.git "$HOME/personal/plenary"
 
