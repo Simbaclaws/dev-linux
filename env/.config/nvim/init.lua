@@ -1,4 +1,2 @@
-require("simbaclaws")
-
--- hello fem
-
+require("simbaclaws.core")
+require("simbaclaws.lazy")
