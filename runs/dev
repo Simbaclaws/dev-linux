@@ -1,11 +1,17 @@
 #!/bin/sh
 
 # Install Development stuff
-sudo apt install -y luarocks ruby-full golang python3 iredis docker.io zsh unixodbc unixodbc-dev tmux php-cli nodejs default-jre libtree-sitter-dev perl
+sudo apt install -y luarocks ruby-full golang python3 iredis docker.io zsh unixodbc unixodbc-dev tmux php-cli default-jre libtree-sitter-dev perl
 
 # Install php composer
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+source ~/.zshrc
+source ~/.bashrc
+nvm install --lts
 
 # Add current user to docker
 sudo usermod -aG docker $USER
