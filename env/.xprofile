@@ -3,4 +3,4 @@ system76-power profile performance
 picom -b --experimental-backends &
 nm-applet &
 redshift &
-afeh &
+feh --bg-fill ~/OneDrive/Pictures/Wallpapers/Flat/wallpaper.png &
