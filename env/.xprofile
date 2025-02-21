@@ -4,3 +4,4 @@ picom -b --experimental-backends &
 nm-applet &
 redshift &
 feh --bg-fill ~/OneDrive/Pictures/Wallpapers/Flat/wallpaper.png &
+dwm-status &

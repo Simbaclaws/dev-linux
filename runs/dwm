@@ -14,3 +14,6 @@ sudo make -C "$DEV_ENV_HOME/dwm" clean install -j"$num_cores"
 
 # Install DMENU
 sudo make -C "$DEV_ENV_HOME/dmenu" clean install -j"$num_cores"
+
+# Install DWM-STATUS
+sudo make -C "$DEV_ENV_HOME/dmenu-status" clean install -j"$num_cores"
