@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install Development stuff
-sudo apt install -y luarocks ruby-full golang python3 iredis docker.io zsh unixodbc unixodbc-dev tmux php-cli default-jre default-jdk libtree-sitter-dev perl
+sudo apt install -y luarocks ruby-full golang python3 python3-venv iredis docker.io zsh unixodbc unixodbc-dev tmux php-cli default-jre default-jdk libtree-sitter-dev perl
 
 # Install php composer
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
