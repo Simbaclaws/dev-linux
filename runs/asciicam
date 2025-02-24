@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Install cmake
+sudo apt install -y cmake
+
+# Install OpenCV
+git clone https://github.com/opencv/opencv.git $HOME/opencv
+
+numcores=$(nproc)
+cd $HOME/opencv
+mkdir -p build
+cd build
+cmake ..
+make -j"$numcores"
+sudo make install
+
+cd ~/dev
+
+# Careful here, we don't wanna go nuts here...
+sudo rm -rf $HOME/opencv
+
+# Install ascii webcam:
+git clone https://github.com/nubilfi/ascii-webcam.git $HOME/ascii-cam
+
+cd $HOME/ascii-cam
+cargo b -r
+
