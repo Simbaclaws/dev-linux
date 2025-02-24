@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Install cmake
-sudo apt install -y cmake
+# Install pre-requisites
+sudo apt install -y cmake clang
 
 # Install OpenCV
 git clone https://github.com/opencv/opencv.git $HOME/opencv
