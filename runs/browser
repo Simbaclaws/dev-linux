@@ -1,10 +1,27 @@
 #!/bin/sh
 
+
+# Fetch the HTML of the directory listing
+wget -q -O - https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/ > edge_dir.html
+
+# Extract file names
+grep 'microsoft-edge-stable_' edge_dir.html | grep '.deb' | awk '{print $9}' > file_names.txt
+
+# Sort and get the latest file name
+sort -V file_names.txt | tail -n 1 > latest_file.txt
+
+# Read the latest file name and download it
+latest_file=$(cat latest_file.txt)
+wget "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/$latest_file"
+
+# Clean up temporary files (optional)
+rm edge_dir.html file_names.txt latest_file.txt
+
 # Get deb file
 wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_126.0.2592.102-1_amd64.deb
 
 # Install browser
-sudo apt install -y ./microsoft-edge-stable_126.0.2592.102-1_amd64.deb
+sudo apt install -y "./$latest_file"
 
 # Delete deb file
-sudo rm ./microsoft-edge-stable_126.0.2592.102-1_amd64.deb
+sudo rm "./$latest_file"
