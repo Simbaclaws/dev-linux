@@ -9,24 +9,27 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 grep=""
 dry_run="0"
 
+# Define a specific order of scripts to run when no pattern is provided
+ordered_scripts="libs files browser wallpaper yubico picom tray dev neovim fun font night-light chat notifications asciicam dwm"
+
 # Parse Arguments
 while [ $# -gt 0 ]; do
-	echo "ARG: \"$1\""
-	if [ "$1" = "--dry" ]; then
-		dry_run="1"
-	else
-		grep="$1"
-	fi
-	shift
+    echo "ARG: \"$1\""
+    if [ "$1" = "--dry" ]; then
+        dry_run="1"
+    else
+        grep="$1"
+    fi
+    shift
 done
 
 # Log function
 log() {
-	if [ "$dry_run" = "1" ]; then
-		echo "[DRY_RUN]: $1"
-	else
-		echo "$1"
-	fi
+    if [ "$dry_run" = "1" ]; then
+        echo "[DRY_RUN]: $1"
+    else
+        echo "$1"
+    fi
 }
 
 log "RUN: env: $env -- grep: $grep"
@@ -34,16 +37,33 @@ log "RUN: env: $env -- grep: $grep"
 # Find executable files in $script_dir/runs
 runs_dir=$(find "$script_dir/runs" -mindepth 1 -maxdepth 1 -executable)
 
-# Iterate over found directories or files
-for s in $runs_dir; do
-	if echo "$s" | grep -vq "$grep"; then
-		log "grep \"$grep\" filtered out $s"
-		continue
-	fi
+# If no grep pattern is passed, use the defined order
+if [ -z "$grep" ]; then
+    # Iterate over ordered scripts
+    for ordered_script in $ordered_scripts; do
+        # Find the full path of the script in the runs directory
+        full_path="$script_dir/runs/$ordered_script"
+        if [ -x "$full_path" ]; then
+            log "running script: $full_path"
+            if [ "$dry_run" = "0" ]; then
+                "$full_path"
+            fi
+        else
+            log "Script $full_path not found or not executable."
+        fi
+    done
+else
+    # Iterate over found files and only run the ones that match the grep pattern exactly
+    for s in $runs_dir; do
+        if [ "$(basename "$s")" = "$grep" ]; then
+            log "running script: $s"
+            if [ "$dry_run" = "0" ]; then
+                "$s"
+            fi
+        else
+            log "grep \"$grep\" filtered out $s"
+        fi
+    done
+fi
 
-	log "running script: $s"
-
-	if [ "$dry_run" = "0" ]; then
-		"$s"
-	fi
-done
+$DEV_ENV_HOME/dev
