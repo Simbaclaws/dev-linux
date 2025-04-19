@@ -36,7 +36,16 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "tsserver",
       },
+      handlers = {
+        -- lsp_zero.default_setup,
+        function(server_name)
+          if server_name == 'tsserver' then
+            server_name = 'ts_ls'
+          end
+        end
+     },
     })
 
     mason_tool_installer.setup({
@@ -47,8 +56,7 @@ return {
         "black", -- python formatter
         "pylint",
         "eslint_d",
-	"typescript-language-server"
       },
     })
-  end,
+    end,
 }
