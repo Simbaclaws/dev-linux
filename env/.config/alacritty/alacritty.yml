@@ -7,6 +7,9 @@ font:
 
 window:
   opacity: 1
+  padding:
+    x: 10
+    y: 10
 
 colors:
   primary:

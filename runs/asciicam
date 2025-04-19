@@ -36,5 +36,8 @@ sudo apt install libssl-dev libstdc++-12-dev clang libclang-dev ffmpeg libavfilt
 # Install tplay
 cargo install tplay
 
+# Install ascii-webcam
+cargo install ascii-webcam
+
 # Cleanup
 rm -rf ~/opencv.zip
