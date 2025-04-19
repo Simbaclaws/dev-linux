@@ -47,7 +47,6 @@ return {
         "go",
         "gpg",
         "graphql",
-        "helm",
         "html",
         "htmldjango",
         "http",
