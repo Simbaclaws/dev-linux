@@ -1,7 +1,6 @@
-system76-power profile performance
 ~/xprofile1
 picom -b --experimental-backends &
 nm-applet &
 redshift &
-feh --bg-fill ~/OneDrive/Pictures/Wallpapers/Flat/wallpaper.png &
+feh --bg-fill ~/OneDrive/Pictures/Wallpapers/Ubuntu/Fuwafuwa_nanbatto_san_by_amaral-dark.png &
 dwm-status &

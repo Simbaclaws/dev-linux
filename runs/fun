@@ -13,13 +13,6 @@ sudo apt install -y yt-dlp bashtop onefetch neofetch htop glances cbonsai cmatri
 sudo add-apt-repository -y ppa:ytvwld/asciiquarium
 sudo apt install -y asciiquarium
 
-# Clone Asciicam
-git clone https://github.com/muesli/asciicam.git "$HOME/asciicam"
-cd "$HOME/asciicam"
-go build
-sudo chmod +x ./asciicam
-sudo mv ./asciicam /usr/local/bin/
-
 # Install somafm cli
 git clone https://github.com/rockymadden/somafm-cli.git "$HOME/somafm"
 cd "$HOME/somafm"
