@@ -36,7 +36,6 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
-        "ts_ls",
       },
     })
 
@@ -48,6 +47,7 @@ return {
         "black", -- python formatter
         "pylint",
         "eslint_d",
+        "tsserver",
       },
     })
     end,
