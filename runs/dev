@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install Development stuff
 sudo apt install -y luarocks ruby-full golang python3 python3-venv iredis docker.io zsh unixodbc unixodbc-dev tmux php-cli default-jre default-jdk libtree-sitter-dev perl
@@ -25,11 +25,18 @@ export NVM_DIR="$HOME/.nvm"
 nvm install --lts
 nvm use --lts
 
+# Install treesitter-cli
+npm install -g tree-sitter-cli
+
 # Add current user to docker
 sudo usermod -aG docker $USER
 
 # Install Deno
 curl -fsSL https://deno.land/install.sh | sh
+
+# Source files...
+source ~/.bash_profile
+source ~/.profile
 
 # Install taskbook (for note taking on cli)
 deno install -g npm:taskbook

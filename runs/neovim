@@ -16,7 +16,7 @@ if [ ! -d "$HOME/neovim" ]; then
 fi
 
 # Install Dependencies
-sudo apt -y install cmake gettext lua5.1 liblua5.1-0-dev
+sudo apt -y install cmake gettext lua5.1 liblua5.1-0-dev fd-find
 
 # Fetch and checkout the specified version
 git -C "$HOME/neovim" fetch --all
@@ -34,7 +34,7 @@ sudo make -C "$HOME/neovim" install -j"$num_cores"
 rm -rf $HOME/neovim
 
 # Remove personal folder before installing anything
-rm -rf $HOME/personal
+# rm -rf $HOME/personal
 
 # Clone additional repositories
 #git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"

@@ -1,15 +1,12 @@
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
-PERSONAL=$XDG_CONFIG_HOME/personal
-for i in $(find -L "$PERSONAL"); do
-	. "$i"
-done
+PERSONAL=$HOME/personal
 
 # FZF initialization
-if [ -f "$HOME/.fzf.zsh" ]; then
-	. "$HOME/.fzf.zsh"
-fi
+#if [ -f "$HOME/.fzf.zsh" ]; then
+#	source "$HOME/.fzf.zsh"
+#fi
 
 # Export other environment variables
 export GOPATH="$HOME/.local/go"
@@ -20,7 +17,7 @@ export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export DEV_ENV_HOME="$HOME/dev"
 
-bindkey -s '^f' "tmux-sessionizer\n"
+#bindkey -s '^f' "tmux-sessionizer\n"
 
 # Function to output a specific range of lines from a file
 catr() {
@@ -68,6 +65,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 	feh --bg-fill ~/Pictures/gowall/hokusai.jpg
 	picom -b --experimental-backends &
 fi
-. "/home/simbaclaws/.deno/env"
+source /home/simbaclaws/.deno/env
 source /home/simbaclaws/.local/share/bash-completion/completions/deno.bash
 
