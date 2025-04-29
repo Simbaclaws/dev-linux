@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Download some grub theme (change this to your distro or manufacturer of choice)
+wget https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.2/asus-rog.tar -O ~/Downloads/asus-rog.tar
+
+# Go to the download folder
+cd ~/Downloads
+
+# Make a directory that holds the files
+mkdir -p asus-rog
+
+# Untar it
+tar -xvf asus-rog.tar -C ./asus-rog
+
+# Create the grub themes dir
+sudo mkdir -p /boot/grub/themes
+
+# Move the newly created theme there
+sudo mv ~/Downloads/asus-rog /boot/grub/themes/
+
+# In case of dual or tripple booting
+sudo sed -i 's/^#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
+
+# Add grub theme
+if ! tail -n 1 /etc/default/grub | grep -Fxq "GRUB_THEME=/boot/grub/themes/asus-rog/theme.txt"; then
+  echo "GRUB_THEME=/boot/grub/themes/asus-rog/theme.txt" | sudo tee -a /etc/default/grub
+fi
+
+# Update grub
+sudo update-grub
