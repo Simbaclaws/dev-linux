@@ -10,7 +10,7 @@ grep=""
 dry_run="0"
 
 # Define a specific order of scripts to run when no pattern is provided
-ordered_scripts="speed libs files browser wallpaper yubico picom tray dev neovim fun font night-light chat notifications grub dwm asciicam"
+ordered_scripts="gtk speed libs files browser wallpaper yubico picom tray dev neovim fun font night-light chat notifications grub dwm asciicam"
 
 # Parse Arguments
 while [ $# -gt 0 ]; do
