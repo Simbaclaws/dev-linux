@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# A lightweight tool to switch gtk themes so I can at the very least select a dark theme...
+sudo apt install lxappearance
