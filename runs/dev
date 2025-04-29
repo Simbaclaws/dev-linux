@@ -41,8 +41,7 @@ npm install -g tree-sitter-cli
 # Add current user to docker
 sudo usermod -aG docker $USER
 
-# Install Deno
-curl -fsSL https://deno.land/install.sh | sh
+printf "Y\n \x20 \x1b[B \x20 \n" | curl -fsSL https://deno.land/install.sh | sh
 
 # Source files...
 source ~/.bash_profile

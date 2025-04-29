@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Disable plymouth
+sudo sed -i 's#^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$#GRUB_CMDLINE_LINUX_DEFAULT="fsck.mode=skip quiet"#g' /etc/default/grub
+
+# Uninstall snaps (Don't forget to re-install apps you had as snaps... Duh)
+sudo apt purge -y snapd && rm -rf ~/snap && sudo rm -rf /snap && sudo rm -rf /var/snap && sudo rm -rf /var/lib/snapd && sudo apt-mark hold snap
+
+# Install flatpack instead
+sudo apt install -y flatpak && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Re-install apps...?
+flatpak install -y flathub org.mozilla.firefox
+# Self hosted passwords?
+flatpak install -y flathub com.bitwarden.desktop
+
+# Update the software center, since snaps are gone...
+sudo apt install -y gnome-software gnome-software-plugin-flatpak
+
+# Don't let the network stall the boot process
+sudo systemctl disable NetworkManager-wait-online.service
