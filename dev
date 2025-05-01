@@ -75,4 +75,3 @@ copy "$DEV_ENV_HOME/env/.xprofile" "$HOME/.xprofile"
 copy "$DEV_ENV_HOME/env/.zshrc" "$HOME/.zshrc"
 # copy "$DEV_ENV_HOME/env/.tmux-sessionizer" "$HOME/.tmux-sessionizer"
 copy "$DEV_ENV_HOME/dev" "$HOME/.local/bin/dev"
-alacritty migrate

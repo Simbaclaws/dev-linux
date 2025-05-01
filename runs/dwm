@@ -1,19 +1,28 @@
 #!/bin/sh
 
-# Add alacritty ppa
-sudo add-apt-repository -y ppa:aslatter/ppa
-
 # Install dependencies
-sudo apt install -y j4-dmenu-desktop libxkbcommon-x11-dev xterm alacritty xorg build-essential libx11-dev libxinerama-dev libxft-dev libwebkit2gtk-4.1-dev
+sudo apt install -y rofi libxkbcommon-x11-dev xterm build-essential libxft-dev libharfbuzz-dev libgd-dev xorg build-essential libx11-dev x11-xserver-utils libxinerama-dev libxft-dev libwebkit2gtk-4.1-dev dash libimlib2-dev 
 
 # Get CPU Core count
 num_cores=$(nproc)
 
-# Install DWM
-sudo make -C "$DEV_ENV_HOME/dwm" clean install -j"$num_cores"
+# Go to dwm
+cd $DEV_ENV_HOME/dwm
 
-# Install DMENU
-sudo make -C "$DEV_ENV_HOME/dmenu" clean install -j"$num_cores"
+# Run make
+make
 
-# Install DWM-STATUS
-sudo make -C "$DEV_ENV_HOME/dwm-status" clean install -j"$num_cores"
+# Install dwm
+sudo make install -j"$num_cores"
+
+# Go to st
+cd $DEV_ENV_HOME/st
+
+# Run make
+make
+
+# Install st
+sudo make install -j"$num_cores"
+
+# Setup rofi theme
+sudo cp -R $DEV_ENV_HOME/rofi ~/.config/
