@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int default_border = 0;   /* to switch back to default border after dynamic border resizing via keybinds */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -21,7 +21,7 @@ static const int toptab             = 1;        /* 0 means bottom tab */
 static const int floatbar           = 1;        /* 1 means the bar will float(don't have padding),0 means the bar have padding */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
-static const int vertpadbar         = 11;
+static const int vertpadbar         = 15;
 static const int vertpadtab         = 35;
 static const int horizpadtabi       = 15;
 static const int horizpadtabo       = 15;
@@ -44,8 +44,8 @@ static const char *fonts[]          = {"Iosevka:style:medium:size=12", "Jetbrain
 
 static const char *colors[][3]      = {
     /*                     fg       bg      border */
-    [SchemeNorm]       = { gray3,   black,  gray2 },
-    [SchemeSel]        = { gray4,   blue,   blue  },
+    [SchemeNorm]       = { gray3,   black,  black },
+    [SchemeSel]        = { gray4,   blue,   gray2  },
     [SchemeTitle]      = { white,   black,  black }, // active window title
     [TabSel]           = { blue,    gray2,  black },
     [TabNorm]          = { gray3,   black,  black },
