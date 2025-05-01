@@ -26,3 +26,6 @@ sudo make install -j"$num_cores"
 
 # Setup rofi theme
 sudo cp -R $DEV_ENV_HOME/rofi ~/.config/
+
+# Copy dwm scripts
+sudo cp -R $DEV_ENV_HOME/scripts ~/.config/

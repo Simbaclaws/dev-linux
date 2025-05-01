@@ -6,7 +6,7 @@
 interval=0
 
 # load colors
-. ~/.config/dwm/scripts/bar_themes/onedark
+. ~/.config/scripts/bar_themes/radium
 
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
