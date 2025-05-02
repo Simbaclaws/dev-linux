@@ -11,7 +11,7 @@ interval=0
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-  printf "^c$green^ ^b$black^  $cpu_val"
+  printf "^c$blue^  $cpu_val"
 }
 
 pkg_updates() {
@@ -28,7 +28,7 @@ pkg_updates() {
 
 battery() {
   get_capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
-  printf "^c$blue^   $get_capacity"
+  printf "^c$red^   $get_capacity"
 }
 
 brightness() {
@@ -37,20 +37,20 @@ brightness() {
 }
 
 mem() {
-  printf "^c$blue^^b$black^  "
-  printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+  printf "^c$yellow^  "
+  printf "^c$yellow^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
-	up) printf "^c$black^ ^b$blue^  ^d^%s" " ^c$blue^Connected" ;;
-	down) printf "^c$black^ ^b$blue^  ^d^%s" " ^c$blue^Disconnected" ;;
+	up) printf "^c$pink^  ^d^%s" " ^c$pink^Connected" ;;
+	down) printf "^c$pink^  ^d^%s" " ^c$pink^Disconnected" ;;
 	esac
 }
 
 clock() {
-	printf "^c$black^ ^b$darkblue^  "
-	printf "^c$black^^b$blue^ $(date '+%H:%M')  "
+	printf "^c$red^  "
+	printf "^c$red^ $(date '+%H:%M')  "
 }
 
 while true; do
@@ -58,5 +58,5 @@ while true; do
   [ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
   interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
+  sleep 1 && xsetroot -name "$updates $(brightness) $(cpu) $(mem) $(wlan) $(clock) $(battery)"
 done
