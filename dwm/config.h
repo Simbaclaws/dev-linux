@@ -67,8 +67,8 @@ static char *tags[] = { "", "", "", "", "" };
 static const char* eww[] = { "eww", "open" , "eww", NULL };
 
 static const Launcher launchers[] = {
+  { eww, ""},
     /* command     name to display */
-    { eww,         "" },
 };
 
 static const int tagschemes[] = {
