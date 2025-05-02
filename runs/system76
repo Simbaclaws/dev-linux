@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Add the system76 repository
+sudo apt-add-repository -y ppa:system76-dev/stable
+
+# Update sources
+sudo apt update
+
+# Install software
+sudo apt install -y system76-firmware system76-power system76-driver system76-driver-nvidia system76-dkms
+
