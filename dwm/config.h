@@ -144,14 +144,11 @@ static const Key keys[] = {
 	{0,				XF86XK_MonBrightnessDown,   spawn,	{.v = light_down}},
 
     // screenshot fullscreen and cropped
-    {MODKEY|ControlMask,                XK_u,       spawn,
-        SHCMD("maim | xclip -selection clipboard -t image/png")},
-    {MODKEY,                            XK_u,       spawn,
-        SHCMD("maim --select | xclip -selection clipboard -t image/png")},
-
+    { MODKEY|ControlMask,               XK_u,       spawn,          SHCMD("maim | xclip -selection clipboard -t image/png")},
+    { MODKEY,                           XK_u,       spawn,          SHCMD("maim --select | xclip -selection clipboard -t image/png")},
     { MODKEY,                           XK_p,       spawn,          SHCMD("rofi -show drun") },
     { MODKEY|ShiftMask,                 XK_Return,  spawn,          SHCMD("st")},
-
+    { MODKEY,                           XK_Print,   spawn,          SHCMD("scrot")},
     // toggle stuff
     { MODKEY,                           XK_b,       togglebar,      {0} },
     { MODKEY|ControlMask,               XK_t,       togglegaps,     {0} },
