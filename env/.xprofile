@@ -4,5 +4,5 @@ xset r rate 200 50 &
 picom -b --experimental-backends &
 nm-applet &
 redshift &
-feh --bg-fill ~/OneDrive/Pictures/Wallpapers/Ubuntu/chad.png &
+feh --bg-fill ~/OneDrive/Pictures/Wallpapers/Ubuntu/od_ubuntu.png &
 dash ~/.config/scripts/bar.sh &
