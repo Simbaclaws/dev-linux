@@ -147,6 +147,7 @@ static const Key keys[] = {
     { MODKEY|ControlMask,               XK_u,       spawn,          SHCMD("maim | xclip -selection clipboard -t image/png")},
     { MODKEY,                           XK_u,       spawn,          SHCMD("maim --select | xclip -selection clipboard -t image/png")},
     { MODKEY,                           XK_p,       spawn,          SHCMD("rofi -show drun") },
+    { MODKEY|ShiftMask,                 XK_p,       spawn,          SHCMD("rofi -show drun -run-command 'pkexec {cmd}'")},
     { MODKEY|ShiftMask,                 XK_Return,  spawn,          SHCMD("st")},
     { MODKEY,                           XK_Print,   spawn,          SHCMD("scrot")},
     // toggle stuff
