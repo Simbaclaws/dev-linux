@@ -2,16 +2,7 @@
 
 # Install Docker
 echo "Installing Docker..."
-sudo dnf remove docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-selinux \
-                  docker-engine-selinux \
-                  docker-engine
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
 
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
@@ -22,10 +13,7 @@ sudo systemctl enable --now docker
 
 # --- Development Stuff ---
 echo "Installing core development tools..."
-sudo dnf install -y \
-    gh luarocks ruby golang python3 python3-pip python3-virtualenv \
-    docker zsh unixODBC-devel tmux php-cli phpunit composer java-17-openjdk-devel \
-    tree-sitter-cli perl wget curl git unzip
+sudo dnf install -y gh luarocks ruby golang python3 python3-pip python3-virtualenv zsh unixODBC-devel tmux php-cli phpunit composer java-17-openjdk-devel tree-sitter-cli perl wget curl git unzip
 
 # Install iredis via pip
 echo "Installing iredis..."
