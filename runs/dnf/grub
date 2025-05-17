@@ -41,5 +41,5 @@ fi
 # The output path for grub2-mkconfig can vary, especially on EFI systems.
 # /boot/grub2/grub.cfg is common for BIOS.
 # For EFI, it might be /boot/efi/EFI/fedora/grub.cfg or similar.
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
