@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Setup repo for preload
+sudo dnf copr enable -y elxreno/preload
+
 # Install preload
 sudo dnf install -y preload
 
