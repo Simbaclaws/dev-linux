@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Update package database and install dependencies for somafm-cli
+sudo dnf check-update
+sudo dnf install -y git make gcc
+
+# Install fun tools
+# onefetch and asciiquarium might not be in default Fedora repos.
+# They might require enabling a COPR repository or manual installation.
+echo "Installing fun tools..."
+sudo dnf install -y \
+    yt-dlp bashtop neofetch htop glances cbonsai cmatrix lsd
+
+# For onefetch and asciiquarium, you might need to find them in COPR:
+# Example: sudo dnf copr enable user/projectname -y && sudo dnf install -y onefetch asciiquarium
+echo "Note: 'onefetch' and 'asciiquarium' may require COPR or manual installation on Fedora."
+
+# Install somafm cli
+if [ ! -d "$HOME/somafm" ]; then
+    git clone https://github.com/rockymadden/somafm-cli.git "$HOME/somafm"
+fi
+cd "$HOME/somafm" || exit
+make
+sudo make install
+
