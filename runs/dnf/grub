@@ -30,6 +30,9 @@ sudo mv "$HOME/Downloads/$THEME" "/boot/grub2/themes/"
 # In case of dual or tripple booting
 sudo sed -i 's/^#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
 
+# Change term to gfxterm
+sudo sed -i 's/GRUB_TERMINAL_OUTPUT="console"/GRUB_TERMINAL_OUTPUT="gfxterm"/' /etc/default/grub
+
 # Add grub theme
 # Adjust path for grub2 if theme.txt is expected in /boot/grub2/themes
 THEME_LINE="GRUB_THEME=\"/boot/grub2/themes/$THEME/theme.txt\""
