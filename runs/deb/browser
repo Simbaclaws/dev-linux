@@ -15,3 +15,7 @@ sudo apt install -y ./$latest_file
 
 # Delete deb file
 sudo rm $latest_file
+
+# Install firefox as a flatpak
+flatpak install -y flathub org.mozilla.firefox
+
