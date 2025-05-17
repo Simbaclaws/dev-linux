@@ -23,7 +23,7 @@ sudo systemctl enable --now docker
 # --- Development Stuff ---
 echo "Installing core development tools..."
 sudo dnf install -y \
-    gh luarocks ruby golang python3 python3-pip python3-virtualenv \
+    zsh gh luarocks ruby golang python3 python3-pip python3-virtualenv \
     docker zsh unixODBC-devel tmux php-cli phpunit composer java-17-openjdk-devel \
     tree-sitter-cli perl wget curl git unzip
 
