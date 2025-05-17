@@ -1,24 +1,7 @@
 #!/bin/bash
 
-# --- Add System76 COPR Repository for Fedora ---
-SYSTEM76_COPR_REPO="atim/system76" # Common COPR for System76 packages on Fedora
-echo "Enabling System76 COPR repository ($SYSTEM76_COPR_REPO) for Fedora..."
-if ! sudo dnf copr list | grep -q "$SYSTEM76_COPR_REPO"; then
-    sudo dnf copr enable -y "$SYSTEM76_COPR_REPO"
-    if [ $? -ne 0 ]; then
-        echo "Failed to enable COPR repository. Please check the repository name or try manually."
-        # As a fallback, try the pop-os COPR if atim/system76 fails or is outdated
-        SYSTEM76_COPR_REPO_FALLBACK="pop-os/system76-drivers"
-        echo "Attempting fallback COPR: $SYSTEM76_COPR_REPO_FALLBACK"
-        sudo dnf copr enable -y "$SYSTEM76_COPR_REPO_FALLBACK"
-        if [ $? -ne 0 ]; then
-            echo "Fallback COPR also failed. System76 packages might not be available."
-        fi
-    fi
-else
-    echo "System76 COPR repository ($SYSTEM76_COPR_REPO) already enabled or another was found."
-fi
-
+sudo dnf copr enable szydell/system76
+sudo dnf install system76-driver
 
 # Update sources (dnf copr enable usually refreshes metadata)
 echo "Ensuring package metadata is up to date..."
@@ -28,39 +11,21 @@ sudo dnf check-update
 echo "Installing System76 software components..."
 # Package names might vary slightly in COPR (e.g., system76-firmware vs system76-firmware-daemon)
 sudo dnf install -y \
-    system76-firmware \
-    system76-power \
-    system76-dkms
-    # system76-driver is a meta-package on Pop!_OS.
+    system76* \
+    firmware-manager
 
-# Install NVIDIA drivers (Fedora way)
-echo "For NVIDIA graphics, it's recommended to use RPM Fusion repositories."
-echo "1. Enable RPM Fusion: https://rpmfusion.org/Configuration"
-echo "2. Install drivers: sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda (example)"
-echo "Ensure Secure Boot is handled if enabled (e.g., sign kmod)."
+sudo systemctl enable --now system76-firmware-daemon
+sudo systemctl mask power-profiles-daemon.service
+sudo gpasswd -a $USER adm
+sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake
+sudo systemctl start com.system76.PowerDaemon.service
+sudo systemctl enable dkms
 
-# Install pesign
-echo "Installing pesign..."
-sudo dnf install -y pesign
+# Gnome shell extension
+git clone https://github.com/pop-os/gnome-shell-extension-system76-power.git
+cd gnome-shell-extension-system76-power
+sudo dnf install nodejs-typescript
+make
+make install
 
-# --- MOK Utility (Manual Steps Required) ---
-echo ""
-echo "---------------------------------------------------------------------------"
-echo "IMPORTANT: Secure Boot & Kernel Signing (MOK Utility)"
-echo "The following commands are for signing your kernel if you use Secure Boot."
-echo "These are ADVANCED steps and require MANUAL ADAPTATION."
-echo ""
-echo "1. Identify the exact kernel image path you need to sign."
-echo "   Example: /boot/vmlinuz-$(uname -r)"
-echo "2. Replace '/boot/vmlinuz-YOUR-KERNEL-VERSION' with your actual kernel path."
-echo "3. The hash 'YOUR_KERNEL_HASH_HERE' will be output by the 'pesign' command."
-echo "   You MUST use the hash specific to YOUR kernel."
-echo ""
-echo "# Example commands (DO NOT RUN AS IS - ADAPT THEM):"
-echo "# sudo pesign -s -i /boot/vmlinuz-YOUR-KERNEL-VERSION -o /boot/vmlinuz-YOUR-KERNEL-VERSION.signed -c YOUR_CERT_NICKNAME"
-echo "# sudo mokutil --import /path/to/your/signing_key.der  (if key not enrolled)"
-echo "# sudo mokutil --import-hash YOUR_KERNEL_HASH_HERE (if using hash)"
-echo "---------------------------------------------------------------------------"
-
-echo "System76 software installation script finished."
 
