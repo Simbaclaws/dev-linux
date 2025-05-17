@@ -26,6 +26,12 @@ sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake
 sudo systemctl start com.system76.PowerDaemon.service
 sudo systemctl enable dkms
 
+
+# Make sure nvidia drivers work...
+sudo dnf install -y kernel-devel akmod-nvidia xorg-x11-drv-nvidia-cuda
+
+sudo systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service
+
 # Gnome shell extension
 git clone https://github.com/pop-os/gnome-shell-extension-system76-power.git
 cd gnome-shell-extension-system76-power
