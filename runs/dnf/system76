@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo dnf copr enable szydell/system76
-sudo dnf install system76-driver
+#sudo dnf copr enable szydell/system76
+#sudo dnf install system76-driver
 
 # Update sources (dnf copr enable usually refreshes metadata)
 echo "Ensuring package metadata is up to date..."
@@ -13,8 +13,6 @@ echo "Installing System76 software components..."
 sudo dnf install -y \
     system76-power \
     system76-firmware \
-    system76-keyboard-configurator \
-    system76-ectool \
     system76-dkms \
     firmware-manager
 
@@ -25,18 +23,4 @@ sudo gpasswd -a $USER adm
 sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake
 sudo systemctl start com.system76.PowerDaemon.service
 sudo systemctl enable dkms
-
-
-# Make sure nvidia drivers work...
-sudo dnf install -y kernel-devel akmod-nvidia xorg-x11-drv-nvidia-cuda
-
-sudo systemctl enable nvidia-hibernate.service nvidia-suspend.service nvidia-resume.service nvidia-powerd.service
-
-# Gnome shell extension
-git clone https://github.com/pop-os/gnome-shell-extension-system76-power.git
-cd gnome-shell-extension-system76-power
-sudo dnf install nodejs-typescript
-make
-make install
-
 
