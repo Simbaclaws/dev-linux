@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Install dependencies for picom
+# Package names are Arch Linux equivalents
+sudo pacman -Syu --noconfirm \
+    libxext libxcb xcb-util-renderutil xcb-util-image xcb-util-xinerama \
+    pixman dbus libconfig mesa pcre2 libevdev uthash libev libx11-xcb pcre \
+    meson ninja git
+
+# Get picom with animations
+git clone https://gitlab.com/phyos/picom.git $HOME/picom
+
+# Build picom
+cd $HOME/picom || exit
+git submodule update --init --recursive
+meson --buildtype=release . build
+ninja -C build
+sudo ninja -C build install
+
+echo "Picom installation attempted."
+
