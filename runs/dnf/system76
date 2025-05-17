@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#sudo dnf copr enable szydell/system76
+sudo dnf copr enable -y szydell/system76
 #sudo dnf install system76-driver
 
 # Update sources (dnf copr enable usually refreshes metadata)
@@ -9,12 +9,7 @@ sudo dnf check-update
 
 # Install System76 software
 echo "Installing System76 software components..."
-# Package names might vary slightly in COPR (e.g., system76-firmware vs system76-firmware-daemon)
-sudo dnf install -y \
-    system76-power \
-    system76-firmware \
-    system76-dkms \
-    firmware-manager
+sudo dnf install -y system76-power system76-firmware system76-dkms firmware-manager
 
 sudo systemctl enable --now system76-firmware-daemon
 sudo systemctl mask tuned.service

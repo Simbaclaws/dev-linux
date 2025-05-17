@@ -10,8 +10,8 @@ sudo dnf install -y git make gcc
 echo "Installing fun tools..."
 sudo dnf install -y yt-dlp btop asciiquarium fastfetch htop glances cbonsai cmatrix lsd
 
-sudo dnf copr enable varlad/onefetch
-sudo dnf install onefetch
+sudo dnf copr enable -y varlad/onefetch
+sudo dnf install -y onefetch
 
 # Install somafm cli
 if [ ! -d "$HOME/somafm" ]; then
