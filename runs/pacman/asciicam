@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# --- Prerequisites OpenCV & Other Tools ---
+echo "Installing prerequisites..."
+sudo pacman -Syu --noconfirm --needed \
+    cmake base-devel wget unzip \
+    ffmpeg gtk3 libjpeg-turbo libpng libtiff libwebp \
+    openssl clang \
+    alsa-lib yt-dlp \
+    rust git # git for cargo if it needs to fetch crates from git
+
+# --- OpenCV Installation from Source ---
+OPENCV_VERSION="4.11.0" # Define OpenCV version
+
+echo "Preparing to install OpenCV version ${OPENCV_VERSION} from source..."
+cd "$HOME" || { echo "Failed to cd to $HOME"; exit 1; }
+
+# Get opencv
+echo "Downloading OpenCV source..."
+wget -O opencv.zip "https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip"
+
+# Unzip it
+echo "Unzipping OpenCV..."
+unzip -q opencv.zip # -q for quiet
+
+# Move it
+mv "opencv-${OPENCV_VERSION}" opencv
+
+# Move into it
+cd "$HOME/opencv" || { echo "Failed to cd to $HOME/opencv"; exit 1; }
+
+# Create build dir
+mkdir -p build && cd build
+
+# Generate build scripts
+echo "Configuring OpenCV build with CMake..."
+# Add -D CMAKE_INSTALL_PREFIX=/usr/local if you want to change install location
+cmake \
+    -D CMAKE_BUILD_TYPE=RELEASE \
+    -D WITH_GTK=ON \
+    -D WITH_FFMPEG=ON \
+    -D WITH_JPEG=ON \
+    -D WITH_PNG=ON \
+    -D WITH_TIFF=ON \
+    -D WITH_WEBP=ON \
+    ..
+
+# Build opencv
+num_cores=$(nproc)
+echo "Building OpenCV using ${num_cores} cores..."
+make -j"${num_cores}"
+
+# Install the binaries
+echo "Installing OpenCV..."
+sudo make install
+
+# --- Install Cargo Tools ---
+echo "Installing tplay via cargo..."
+cargo install tplay
+
+echo "Installing ascii-webcam via cargo..."
+cargo install ascii-webcam
+
+# --- Cleanup ---
+echo "Cleaning up downloaded files..."
+rm -rf "$HOME/opencv.zip"
+# Optionally, remove the build directory if space is a concern and you don't need it for uninstallation
+# rm -rf "$HOME/opencv"
+
+echo "Script finished."
