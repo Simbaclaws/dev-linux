@@ -1,35 +1,35 @@
 #!/bin/bash
 
-# --- GitHub CLI ---
-echo "Installing GitHub CLI..."
-sudo dnf install -y gh
+# Install Docker
+echo "Installing Docker..."
+sudo dnf remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+
+sudo dnf -y install dnf-plugins-core
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo systemctl enable --now docker
 
 # --- Development Stuff ---
 echo "Installing core development tools..."
 sudo dnf install -y \
-    luarocks ruby golang python3 python3-pip python3-virtualenv \
-    docker zsh unixODBC-devel tmux php-cli java-17-openjdk-devel \
-    tree-sitter-cli perl wget curl git unzip # tree-sitter-cli might be from npm
+    gh luarocks ruby golang python3 python3-pip python3-virtualenv \
+    docker zsh unixODBC-devel tmux php-cli phpunit composer java-17-openjdk-devel \
+    tree-sitter-cli perl wget curl git unzip
 
 # Install iredis via pip
 echo "Installing iredis..."
 pip3 install iredis # Use pip3
-
-# --- PHP Composer ---
-echo "Installing PHP Composer..."
-EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
-
-if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
-then
-    >&2 echo 'ERROR: Invalid installer checksum'
-    rm composer-setup.php
-    exit 1
-fi
-
-php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-rm composer-setup.php
 
 # --- NVM (Node Version Manager) ---
 echo "Installing NVM..."
@@ -49,12 +49,6 @@ if ! command -v tree-sitter &> /dev/null; then
     echo "Installing tree-sitter-cli via npm..."
     npm install -g tree-sitter-cli
 fi
-
-# --- Docker Group & Service ---
-echo "Adding current user to docker group and enabling docker service..."
-sudo usermod -aG docker $USER
-sudo systemctl enable --now docker
-echo "You may need to log out and log back in for docker group changes to take effect."
 
 # --- Deno ---
 echo "Installing Deno..."
@@ -96,13 +90,13 @@ sudo dnf install -y \
     curl \
     wget \
     file \
-    libX11-devel libXrandr-devel libXi-devel libXtst-devel # General X11 dev headers often pulled by webkit
-    libxdo-devel \
+    libX11-devel libXrandr-devel libXi-devel libXtst-devel libxdo-devel \
     openssl-devel \
     libappindicator-gtk3-devel \
     librsvg2-devel \
-    dbus-devel gtk3-devel # Common GTK dev dependencies
-sudo dnf groupinstall -y "Development Tools" "C Development Tools and Libraries" # For build-essential like tools
+    dbus-devel gtk3-devel
+
+sudo dnf group install -y "development-tools"
 
 # --- Tauri App & CLI ---
 echo "Installing create-tauri-app and tauri-cli..."
@@ -117,10 +111,4 @@ cargo install trunk --locked
 echo "Adding WASM target for Rust..."
 rustup target add wasm32-unknown-unknown
 
-echo "---------------------------------------------------------------------"
-echo "Setup script finished. Review output for any errors."
-echo "PATHs for Go, Deno, Cargo, NVM need to be in your shell profile."
-echo "A new terminal session or sourcing your profile is likely required."
-echo "For Docker, a logout/login might be required."
-echo "---------------------------------------------------------------------"
-
+echo "Finnished Dev Install"
