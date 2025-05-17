@@ -8,12 +8,10 @@ sudo dnf install -y git make gcc
 # onefetch and asciiquarium might not be in default Fedora repos.
 # They might require enabling a COPR repository or manual installation.
 echo "Installing fun tools..."
-sudo dnf install -y \
-    yt-dlp bashtop neofetch htop glances cbonsai cmatrix lsd
+sudo dnf install -y yt-dlp bashtop asciiquarium neofetch htop glances cbonsai cmatrix lsd
 
-# For onefetch and asciiquarium, you might need to find them in COPR:
-# Example: sudo dnf copr enable user/projectname -y && sudo dnf install -y onefetch asciiquarium
-echo "Note: 'onefetch' and 'asciiquarium' may require COPR or manual installation on Fedora."
+sudo dnf copr enable varlad/onefetch
+sudo dnf install onefetch
 
 # Install somafm cli
 if [ ! -d "$HOME/somafm" ]; then
