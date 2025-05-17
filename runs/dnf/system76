@@ -11,7 +11,11 @@ sudo dnf check-update
 echo "Installing System76 software components..."
 # Package names might vary slightly in COPR (e.g., system76-firmware vs system76-firmware-daemon)
 sudo dnf install -y \
-    system76* \
+    system76-power \
+    system76-firmware \
+    system76-keyboard-configurator \
+    system76-ectool \
+    system76-dkms \
     firmware-manager
 
 sudo systemctl enable --now system76-firmware-daemon
