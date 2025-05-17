@@ -3,7 +3,7 @@
 # Install wallpaper software, imagick and ffmpeg
 sudo apt install -y feh ffmpeg imagemagick
 
-XPROFILE_FILE="$HOME/dev/env/.xprofile"
+XPROFILE_FILE="$DEV_ENV_HOME/env/.xprofile"
 
 TARGET_WALLPAPER=""
 DETECTED_OS_NAME="" # For user feedback
