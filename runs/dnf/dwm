@@ -7,12 +7,7 @@ if [ -z "$DEV_ENV_HOME" ]; then
 fi
 
 # Install dependencies
-# "Development Tools" group for build-essential
-sudo dnf install -y \
-    rofi libxkbcommon-x11-devel xterm libXft-devel harfbuzz-devel gd-devel \
-    libX11-devel libXinerama-devel webkit2gtk4.1-devel dash imlib2-devel \
-    xorg-x11-server-devel # Provides X11 dev headers
-sudo dnf groupinstall -y "Development Tools" "C Development Tools and Libraries"
+sudo dnf install -y rofi libxkbcommon-x11-devel xterm libXft-devel harfbuzz-devel gd-devel libX11-devel libXinerama-devel webkit2gtk4.1-devel dash imlib2-devel xorg-x11-server-devel
 
 # Get CPU Core count
 num_cores=$(nproc)
