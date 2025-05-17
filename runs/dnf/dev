@@ -1,0 +1,126 @@
+#!/bin/bash
+
+# --- GitHub CLI ---
+echo "Installing GitHub CLI..."
+sudo dnf install -y gh
+
+# --- Development Stuff ---
+echo "Installing core development tools..."
+sudo dnf install -y \
+    luarocks ruby golang python3 python3-pip python3-virtualenv \
+    docker zsh unixODBC-devel tmux php-cli java-17-openjdk-devel \
+    tree-sitter-cli perl wget curl git unzip # tree-sitter-cli might be from npm
+
+# Install iredis via pip
+echo "Installing iredis..."
+pip3 install iredis # Use pip3
+
+# --- PHP Composer ---
+echo "Installing PHP Composer..."
+EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+then
+    >&2 echo 'ERROR: Invalid installer checksum'
+    rm composer-setup.php
+    exit 1
+fi
+
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+rm composer-setup.php
+
+# --- NVM (Node Version Manager) ---
+echo "Installing NVM..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+echo "Installing LTS Node.js via NVM..."
+nvm install --lts
+nvm use --lts
+nvm alias default 'lts/*'
+
+# --- Tree-sitter CLI (via npm, if not installed by dnf) ---
+if ! command -v tree-sitter &> /dev/null; then
+    echo "Installing tree-sitter-cli via npm..."
+    npm install -g tree-sitter-cli
+fi
+
+# --- Docker Group & Service ---
+echo "Adding current user to docker group and enabling docker service..."
+sudo usermod -aG docker $USER
+sudo systemctl enable --now docker
+echo "You may need to log out and log back in for docker group changes to take effect."
+
+# --- Deno ---
+echo "Installing Deno..."
+curl -fsSL https://deno.land/install.sh | sh
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# --- Taskbook (via Deno) ---
+echo "Installing Taskbook..."
+deno install -g --allow-read --allow-write --allow-env --allow-net npm:taskbook
+
+# --- usql (Universal SQL CLI via Go) ---
+echo "Installing usql..."
+go install github.com/xo/usql@latest
+
+# --- Oh My Zsh ---
+echo "Installing Oh My Zsh..."
+CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+
+echo "Installing Oh My Zsh plugins..."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "${ZSH_CUSTOM}/plugins/autoswitch_virtualenv"
+
+echo "Configuring Oh My Zsh plugins in .zshrc..."
+sed -i 's/^plugins=(git)$/plugins=(git zsh-syntax-highlighting zsh-autosuggestions autoswitch_virtualenv sudo)/' ~/.zshrc
+
+# --- Rust ---
+echo "Installing Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+source "$HOME/.cargo/env"
+
+# --- Tauri Dependencies ---
+echo "Installing Tauri dependencies for Fedora/RHEL..."
+sudo dnf install -y \
+    webkit2gtk4.1-devel \
+    curl \
+    wget \
+    file \
+    libX11-devel libXrandr-devel libXi-devel libXtst-devel # General X11 dev headers often pulled by webkit
+    libxdo-devel \
+    openssl-devel \
+    libappindicator-gtk3-devel \
+    librsvg2-devel \
+    dbus-devel gtk3-devel # Common GTK dev dependencies
+sudo dnf groupinstall -y "Development Tools" "C Development Tools and Libraries" # For build-essential like tools
+
+# --- Tauri App & CLI ---
+echo "Installing create-tauri-app and tauri-cli..."
+cargo install create-tauri-app --locked
+cargo install tauri-cli --version '^2.0.0-beta' --locked
+
+# --- Trunk ---
+echo "Installing Trunk..."
+cargo install trunk --locked
+
+# --- WASM Target for Rust ---
+echo "Adding WASM target for Rust..."
+rustup target add wasm32-unknown-unknown
+
+echo "---------------------------------------------------------------------"
+echo "Setup script finished. Review output for any errors."
+echo "PATHs for Go, Deno, Cargo, NVM need to be in your shell profile."
+echo "A new terminal session or sourcing your profile is likely required."
+echo "For Docker, a logout/login might be required."
+echo "---------------------------------------------------------------------"
+
