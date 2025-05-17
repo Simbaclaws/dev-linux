@@ -6,6 +6,9 @@ if [ -z "$DEV_ENV_HOME" ]; then
   exit 1
 fi
 
+# Install xsession
+sudo dnf install -y gnome-session-xsession
+
 # Install Dev Tools
 sudo dnf group install -y "development-tools" "c-development"
 
