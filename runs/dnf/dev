@@ -15,6 +15,8 @@ sudo systemctl enable --now docker
 echo "Installing core development tools..."
 sudo dnf install -y gh luarocks ruby golang python3 python3-pip python3-virtualenv zsh unixODBC-devel tmux php-cli phpunit composer tree-sitter-cli perl wget curl git unzip java-latest-openjdk-devel
 
+chsh -s $(which zsh) $USER
+
 # Install iredis via pip
 echo "Installing iredis..."
 pip3 install iredis # Use pip3
