@@ -53,29 +53,19 @@ deno install -g npm:taskbook
 # Install usql (universal sql cli)
 go install -tags all github.com/xo/usql@master
 
-# Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install Oh my zsh
+echo "Installing Oh My Zsh..."
+CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Install zsh syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 
-# Add zsh syntax highlighting to the zshrc
-sed -i 's/\(plugins=(.*)\)/\1 zsh-syntax-highlighting)/' ~/.zshrc
+echo "Installing Oh My Zsh plugins..."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "${ZSH_CUSTOM}/plugins/autoswitch_virtualenv"
 
-# Install zsh autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Add zsh autosuggestions to the zshrc
-sed -i 's/\(plugins=(.*)\)/\1 zsh-autosuggestions)/' ~/.zshrc
-
-# Install zsh autoswitch virtualenv
-git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
-
-# Add zsh autoswitch virtualenv to the zshrc
-sed -i 's/\(plugins=(.*)\)/\1 autoswitch_virtualenv)/' ~/.zshrc
-
-# Add sudo to the zshrc
-sed -i 's/\(plugins=(.*)\)/\1 sudo)/' ~/.zshrc
+echo "Configuring Oh My Zsh plugins in .zshrc..."
+sed -i 's/^plugins=(git)$/plugins=(git zsh-syntax-highlighting zsh-autosuggestions autoswitch_virtualenv sudo)/' ~/.zshrc
 
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
