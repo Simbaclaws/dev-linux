@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Needed for Microsoft based products sometimes...
 
 # Grab the latest file from the repo
 latest_file=$(curl -s https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/ | \

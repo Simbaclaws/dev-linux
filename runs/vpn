@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Install vpn software
+sudo apt install -y wireguard
+
+# I'll setup the configuration later....
