@@ -68,6 +68,12 @@ cp $DEV_ENV_HOME/env/.zshrc $HOME/.zshrc
 echo "Configuring Oh My Zsh plugins in .zshrc..."
 sed -i 's/^plugins=(git)$/plugins=(git zsh-syntax-highlighting zsh-autosuggestions autoswitch_virtualenv sudo)/' ~/.zshrc
 
+# --- FZF ---
+mkdir -P $HOME/personal/fzf
+
+git clone https://github.com/junegunn/fzf.git $HOME/personal/fzf
+$HOME/personal/fzf/install
+
 # --- Rust ---
 echo "Installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
