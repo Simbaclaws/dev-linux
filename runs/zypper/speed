@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Install preload
+sudo zypper install --non-interactive preload
+
+# Disable plymouth
+sudo sed -i 's#^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$#GRUB_CMDLINE_LINUX_DEFAULT="fsck.mode=skip quiet"#g' /etc/default/grub
+
+# Uninstall snaps
+sudo zypper remove --non-interactive snapd && rm -rf ~/snap && sudo rm -rf /snap /var/snap /var/lib/snapd && sudo zypper addlock snapd
+
+# Don't let the network stall the boot process
+sudo systemctl disable NetworkManager-wait-online.service
