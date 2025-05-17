@@ -19,6 +19,7 @@ sudo dnf install -y \
     firmware-manager
 
 sudo systemctl enable --now system76-firmware-daemon
+sudo systemctl mask tuned.service
 sudo systemctl mask power-profiles-daemon.service
 sudo gpasswd -a $USER adm
 sudo systemctl enable com.system76.PowerDaemon.service system76-power-wake
