@@ -29,3 +29,6 @@ sudo cp -R $DEV_ENV_HOME/rofi ~/.config/
 
 # Copy dwm scripts
 sudo cp -R $DEV_ENV_HOME/scripts ~/.config/
+
+# Make sure dwm is part of the gdm desktop sessions
+sudo cp $DEV_ENV_HOME/xsession/dwm.desktop /usr/share/xsessions/dwm.desktop

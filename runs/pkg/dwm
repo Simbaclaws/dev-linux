@@ -51,3 +51,4 @@ cp -R "$DEV_ENV_HOME/scripts/"* "$HOME/.config/scripts/"
 
 echo "DWM, ST, and Rofi setup script finished."
 
+sudo cp $DEV_ENV_HOME/xsession/dwm.desktop /usr/share/xsessions/dwm.desktop

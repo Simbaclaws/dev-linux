@@ -50,3 +50,5 @@ mkdir -p ~/.config/scripts # Ensure scripts directory exists
 cp -R "$DEV_ENV_HOME/scripts/"* ~/.config/scripts/ # Copy contents of scripts dir
 
 echo "DWM, ST, and Rofi setup script finished."
+
+sudo cp $DEV_ENV_HOME/xsession/dwm.desktop /usr/share/xsessions/dwm.desktop
