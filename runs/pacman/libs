@@ -1,5 +1,7 @@
 #!/bin/sh
 
+./aur
+
 sudo pacman -Syu --noconfirm scrot bat zip pulsemixer pulseaudio pulseaudio-alsa gcc unzip curl wget git ca-certificates ripgrep xclip jq tldr python-pip shellcheck mpv ffmpeg brotli p7zip meson ninja
 
 mkdir -p ~/.local/bin
