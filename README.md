@@ -28,7 +28,9 @@ Want to know how to get this up and running?
 ### Prerequisites
 
 This setup assumes a distribution is setup with systemd, gnome and gdm.
+
 So whichever distribution you attempt to install, it should be a base install with gnome, gdm and systemd working.
+
 **I want to move away from this later, but for now it helps in speeding up the creation of the wm setup**
 
 ### Installation
