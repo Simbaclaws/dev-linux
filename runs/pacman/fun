@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update package database and install dependencies for somafm-cli
-sudo pacman -Syu --noconfirm --needed git base-devel
+sudo pacman -S --noconfirm --needed git base-devel
 
 # Install fun tools
 # onefetch and lsd might be in official repos or AUR. asciiquarium is typically in AUR.

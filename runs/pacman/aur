@@ -10,7 +10,7 @@ fi
 
 # Update package database and install dependencies
 echo "Updating package database and installing dependencies (git, base-devel)..."
-sudo pacman -Syu --needed --noconfirm git base-devel
+sudo pacman -S --needed --noconfirm git base-devel
 
 # Create a directory for building AUR packages if it doesn't exist
 # Using a temporary directory is also a good option for a single build

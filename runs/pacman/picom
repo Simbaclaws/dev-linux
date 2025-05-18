@@ -2,7 +2,7 @@
 
 # Install dependencies for picom
 # Package names are Arch Linux equivalents
-sudo pacman -Syu --noconfirm base-devel cmake autoconf automake libtool binutils bison gcc gdb glibc m4 make libev libevdev libxext libxcb xcb-util-renderutil xcb-util-image xcb-util pixman dbus libconfig mesa pcre2 libevdev uthash libev libx11 pcre meson ninja git
+sudo pacman -S --noconfirm base-devel cmake autoconf automake libtool binutils bison gcc gdb glibc m4 make libev libevdev libxext libxcb xcb-util-renderutil xcb-util-image xcb-util pixman dbus libconfig mesa pcre2 libevdev uthash libev libx11 pcre meson ninja git
 
 # Get picom with animations
 git clone https://gitlab.com/phyos/picom.git $HOME/picom

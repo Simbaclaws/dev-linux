@@ -22,7 +22,7 @@ fi
 # base-devel group includes make, gcc, etc.
 # ninja is recommended for faster builds.
 echo "Installing dependencies for Neovim..."
-sudo pacman -Syu --noconfirm --needed base-devel cmake gettext ninja fd git unzip curl
+sudo pacman -S --noconfirm --needed base-devel cmake gettext ninja fd git unzip curl
 
 # Fetch and checkout the specified version
 echo "Fetching all tags and checking out version: $version..."

@@ -2,12 +2,7 @@
 
 # --- Prerequisites OpenCV & Other Tools ---
 echo "Installing prerequisites..."
-sudo pacman -Syu --noconfirm --needed \
-    cmake base-devel wget unzip \
-    ffmpeg gtk3 libjpeg-turbo libpng libtiff libwebp \
-    openssl clang \
-    alsa-lib yt-dlp \
-    rust git # git for cargo if it needs to fetch crates from git
+sudo pacman -S --noconfirm --needed cmake base-devel wget unzip ffmpeg gtk3 libjpeg-turbo libpng libtiff libwebp openssl clang alsa-lib yt-dlp rust git
 
 # --- OpenCV Installation from Source ---
 OPENCV_VERSION="4.11.0" # Define OpenCV version
