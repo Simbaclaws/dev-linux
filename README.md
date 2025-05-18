@@ -31,6 +31,14 @@ The following distro's have been tested:
 ### - OpenSuse Tumbleweed (semi-working)
 ![Tumbleweed Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_tumbleweed.png)
 
+## Neovim Configuration
+
+I'm still learning how to use neovim, so please be gentle when judging my configuration, I'm quite new to this.
+I'm taking inspiration from [ThePrimeagen](https://github.com/ThePrimeagen/) as well as [Josean](https://github.com/josean-dev/dev-environment-files)
+
+### - Neovim (semi-working)
+![Neovim Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/neovim.png)
+
 ## Issues
 
 ### - OpenSuse Tumbleweed
