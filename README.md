@@ -62,6 +62,12 @@ Preferably I get all of them working, but that's just a dream.
 ### - Fedora (working)
 ![Fedora Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_fedora.png)
 
+### - Manjaro (semi-working)
+
+There is a weird rendering glitch in neovim as well as an issue with a library causing the asciicam not to work.
+
+![Manjaro Setup](https://raw,githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_manjaro.png)
+
 ### - OpenSuse Tumbleweed (semi-working)
 
 On tumbleweed I haven't yet figured out how to build the st terminal configuration and the asciicam.
