@@ -9,7 +9,7 @@ fi
 # Install dependencies
 # base-devel includes build-essential equivalents like make, gcc
 # xorg-server-devel or xorg-xinit might be needed for full X development headers
-sudo pacman -S --noconfirm --needed rofi libxkbcommon-x11 xterm base-devel libxft harfbuzz gd libx11 libxinerama webkit2gtk-4.1 dash imlib2 xorg-server-devel
+sudo pacman -S --noconfirm --needed xorg-xsetroot rofi libxkbcommon-x11 xterm base-devel libxft harfbuzz gd libx11 libxinerama webkit2gtk-4.1 dash imlib2 xorg-server-devel
 
 # Get CPU Core count
 num_cores=$(nproc)
