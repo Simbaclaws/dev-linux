@@ -128,5 +128,4 @@ I installed some resource monitors to look at.
 - Make the grub theming script ask you which theme you want to install, instead of having to change the script manually!
 **Currently set to system76 for my laptop**
 - Add mpd and ncmpcpp with visualisations for listening to music.
-- Get Arch based distro's working
 - Get BSD based distro's working
