@@ -66,7 +66,7 @@ Preferably I get all of them working, but that's just a dream.
 
 There is a weird rendering glitch in neovim as well as an issue with a library causing the asciicam not to work.
 
-![Manjaro Setup](https://raw,githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_manjaro.png)
+![Manjaro Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_manjaro.png)
 
 ### - OpenSuse Tumbleweed (semi-working)
 
