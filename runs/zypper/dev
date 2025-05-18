@@ -6,7 +6,7 @@ sudo zypper install -y -l gh
 
 # --- Development Stuff ---
 echo "Installing core development tools..."
-sudo zypper install -y -l lua53-luarocks ruby go python313 python313-pip python3-redis python313-virtualenv docker zsh unixODBC-devel tmux php8 composer java-21-openjdk tree-sitter perl wget curl git unzip
+sudo zypper install -y -l lua53-luarocks ruby go python313 python313-pip python3-redis python313-virtualenv docker docker-compose docker-compose-switch zsh unixODBC-devel tmux php8 composer java-21-openjdk tree-sitter perl wget curl git unzip
 
 # --- NVM (Node Version Manager) ---
 echo "Installing NVM..."
@@ -29,8 +29,12 @@ fi
 
 # --- Docker Group & Service ---
 echo "Adding current user to docker group and enabling docker service..."
-sudo usermod -aG docker $USER
-sudo systemctl enable --now docker
+
+sudo systemctl enable docker
+newgrp docker
+sudo usermod -a -G docker $USER
+sudo systemctl restart docker
+
 echo "You may need to log out and log back in for docker group changes to take effect."
 
 # --- Deno ---
