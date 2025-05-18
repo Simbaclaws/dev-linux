@@ -6,30 +6,7 @@ sudo pacman -Syu --noconfirm --needed gh
 
 # --- Development Stuff ---
 echo "Installing core development tools..."
-sudo pacman -S --noconfirm --needed \
-    luarocks ruby go python python-pip python-virtualenv \
-    docker zsh unixodbc tmux php openjdk-17-jre openjdk-17-jdk \
-    tree-sitter perl wget curl git unzip
-
-# Install iredis via pip
-echo "Installing iredis..."
-pip install iredis
-
-# --- PHP Composer ---
-echo "Installing PHP Composer..."
-EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
-
-if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
-then
-    >&2 echo 'ERROR: Invalid installer checksum'
-    rm composer-setup.php
-    exit 1
-fi
-
-php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-rm composer-setup.php
+sudo pacman -S --noconfirm --needed luarocks ruby go python python-pip python-virtualenv docker zsh unixodbc tmux php composer python-redis tree-sitter perl wget curl git unzip
 
 # --- NVM (Node Version Manager) ---
 echo "Installing NVM..."
