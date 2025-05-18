@@ -8,12 +8,13 @@ sudo zypper install -y -l opencv cmake gcc-c++ python313-numpy wget unzip ffmpeg
 echo "Installing tplay via cargo..."
 cargo install tplay
 
+export OPENCV_INCLUDE_PATHS="/usr/include/boost/computer/interop/opencv/"
+export OPENCV_LINK_PATHS="/usr/lib64/"
+export OPENCV_LINK_LIBS="libopencv_calib3d,libopencv_core,libopencv_dnn,libopencv_features,libopencv_flann,libopencv_highgui,libopencv_imgcodecs,libopencv_imgproc,libopencv_ml,libopencv_objdetect,libopencv_photo,libopencv_plot,libopencv_shape,libopencv_stitching,libopencv_tracking,libopencv_video,libopencv_videoio"
+
 echo "Installing ascii-webcam via cargo..."
 cargo install ascii-webcam
 
 # --- Cleanup ---
-echo "Cleaning up downloaded files..."
-rm -rf "$HOME/opencv.zip"
-
 echo "Script finished."
 
