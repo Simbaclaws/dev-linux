@@ -21,6 +21,29 @@ For the colorscheme, I'm a big fan of Radium.
 I'm not nessecarely a big fan of nvchad as in the entire configuration. 
 Some parts of it are pretty nice, I like the visual appeal.
 
+## Getting Started
+
+Want to know how to get this up and running?
+
+### Prerequisites
+
+This setup assumes a distribution is setup with systemd, gnome and gdm.
+So whichever distribution you attempt to install, it should be a base install with gnome, gdm and systemd working.
+**I want to move away from this later, but for now it helps in speeding up the creation of the wm setup**
+
+### Installation
+
+Install git with your package manager of the distribution that you have installed and do:
+```
+cd $HOME
+git clone https://github.com/simbaclaws/dev-linux.git dev
+cd dev
+./run
+```
+
+Follow the entire installation process until the end.
+Reboot the machine afterwards, then at the gdm login screen, change the DE to DWM and login.
+
 ## Tested Distributions
 
 The following distro's have been tested:
@@ -92,4 +115,5 @@ I installed some resource monitors to look at.
 
 ## TODO
 
+- Make the grub theming script ask you which theme you want to install, instead of having to change the script manually!
 - Add mpd and ncmpcpp with visualisations for listening to music.
