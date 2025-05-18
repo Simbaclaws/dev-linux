@@ -41,7 +41,9 @@ cd dev
 ./run
 ```
 
-Follow the entire installation process until the end.
+Follow the entire installation process until the end. 
+**Most of it is automated, some parts still requires pressing some keys**
+
 Reboot the machine afterwards, then at the gdm login screen, change the DE to DWM and login.
 
 ## Tested Distributions
