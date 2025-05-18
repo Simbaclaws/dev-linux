@@ -15,6 +15,12 @@ I've also taken inspiration for the ricing of my system from:
 - [st](https://github.com/siduck/st)
 - [grub](https://www.pling.com/p/1482847/)
 
+For the colorscheme, I'm a big fan of Radium.
+- [Radium nvchad theme](https://nvchad.com/themes)
+
+I'm not nessecarely a big fan of nvchad as in the entire configuration. 
+Some parts of it are pretty nice, I like the visual appeal.
+
 ## Tested Distributions
 
 The following distro's have been tested:
