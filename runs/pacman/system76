@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# AI IS ABSOLUTELY BONKERS!!!
+
+
 # --- Add System76 Repository for Arch Linux ---
 echo "Adding System76 repository and GPG key for Arch Linux..."
 # Add the key
