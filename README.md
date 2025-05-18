@@ -87,3 +87,9 @@ I installed some resource monitors to look at.
 
 ### - Bashtop (working)
 ![Bashtop](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/bashtop.png)
+
+
+
+## TODO
+
+- Add mpd and ncmpcpp with visualisations for listening to music.
