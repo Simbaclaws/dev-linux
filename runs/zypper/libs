@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo zypper refresh
-sudo zypper install -l scrot bat zip pulsemixer pulseaudio-utils gcc-c++ unzip curl wget git ca-certificates ripgrep xclip jq tldr shutter python3-pip shellcheck mpv ffmpeg brotli p7zip meson ninja
+sudo zypper -y install -l scrot bat zip pulsemixer pulseaudio-utils gcc-c++ unzip curl wget git ca-certificates ripgrep xclip jq tldr shutter python3-pip shellcheck mpv ffmpeg brotli p7zip meson ninja
 
 mkdir -p ~/.local/bin
 ln -s /usr/bin/bat ~/.local/bin/bat

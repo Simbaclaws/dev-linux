@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Install flatpak
-sudo zypper install -l flatpak
+sudo zypper install -y -l flatpak
 
 # Add flathub repository
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Add gnome software plugin flatpak
-sudo zypper install -l gnome-software gnome-software-plugin-flatpak
+sudo zypper install -y -l gnome-software
 

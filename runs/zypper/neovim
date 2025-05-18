@@ -2,7 +2,7 @@
 
 # Install Dependencies for openSUSE
 echo "Installing Neovim..."
-sudo zypper install -l cmake gcc-c++ make ninja gettext-tools libtool autoconf automake fd git unzip curl neovim
+sudo zypper install -y -l cmake gcc-c++ make ninja gettext-tools libtool autoconf automake fd git unzip curl neovim
 
 echo "Neovim installation process complete."
 

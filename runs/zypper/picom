@@ -2,7 +2,7 @@
 
 # Install dependencies for picom
 # Package names are openSUSE equivalents
-sudo zypper install -l libXext-devel libxcb-devel libxcb-damage-devel libxcb-xfixes-devel libxcb-shape-devel libxcb-renderutil-devel libxcb-render-devel libxcb-randr-devel libxcb-composite-devel libxcb-image-devel libxcb-present-devel libxcb-xinerama-devel libxcb-glx-devel libpixman-1-0-devel dbus-1-devel libconfig-devel Mesa-libGL-devel pcre2-devel libevdev-devel uthash-devel libev-devel libX11-xcb-devel pcre-devel meson ninja git
+sudo zypper install -y -l libXext-devel libxcb-devel libxcb-damage-devel libxcb-xfixes-devel libxcb-shape-devel libxcb-renderutil-devel libxcb-render-devel libxcb-randr-devel libxcb-composite-devel libxcb-image-devel libxcb-present-devel libxcb-xinerama-devel libxcb-glx-devel libpixman-1-0-devel dbus-1-devel libconfig-devel Mesa-libGL-devel pcre2-devel libevdev-devel uthash-devel libev-devel libX11-xcb-devel pcre-devel meson ninja git
 
 # Get picom with animations
 git clone https://gitlab.com/phyos/picom.git $HOME/picom

@@ -2,11 +2,11 @@
 
 # --- GitHub CLI ---
 echo "Installing GitHub CLI..."
-sudo zypper install -l gh
+sudo zypper install -y -l gh
 
 # --- Development Stuff ---
 echo "Installing core development tools..."
-sudo zypper install -l luarocks ruby golang python3 python3-pip python3-virtualenv docker zsh unixODBC-devel tmux php8-cli java-17-openjdk-devel tree-sitter-cli perl wget curl git unzip
+sudo zypper install -y -l luarocks ruby golang python3 python3-pip python3-virtualenv docker zsh unixODBC-devel tmux php8-cli java-17-openjdk-devel tree-sitter-cli perl wget curl git unzip
 
 # Install iredis via pip
 echo "Installing iredis..."
@@ -96,8 +96,8 @@ source "$HOME/.cargo/env"
 
 # --- Tauri Dependencies ---
 echo "Installing Tauri dependencies for openSUSE..."
-sudo zypper install -l libwebkit2gtk-4_1-devel curl wget file libX11-devel libXrandr-devel libXi-devel libXtst-devel libxdo-devel libopenssl-devel libappindicator3-devel librsvg-devel dbus-1-glib-devel gtk3-devel
-sudo zypper install -l -t pattern devel_basis devel_C_C++
+sudo zypper install -y -l libwebkit2gtk-4_1-devel curl wget file libX11-devel libXrandr-devel libXi-devel libXtst-devel libxdo-devel libopenssl-devel libappindicator3-devel librsvg-devel dbus-1-glib-devel gtk3-devel
+sudo zypper install -y -l -t pattern devel_basis devel_C_C++
 
 # --- Tauri App & CLI ---
 echo "Installing create-tauri-app and tauri-cli..."

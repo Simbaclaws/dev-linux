@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install dependencies
-sudo zypper install -l wget tar grub2
+sudo zypper install -y -l wget tar grub2
 
 # Change this to your favourite distro or manufacturer
 THEME="system76"

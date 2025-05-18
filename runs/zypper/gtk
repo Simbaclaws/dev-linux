@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # A lightweight tool to switch gtk themes
-sudo zypper install -l lxappearance
+sudo zypper install -y -l lxappearance
 
 # Don't forget about those pesky flatpak themes!
-sudo zypper install -l xdg-desktop-portal-gtk
+sudo zypper install -y -l xdg-desktop-portal-gtk
 
 # Install a common dark theme for Flatpaks
 sudo flatpak install --noninteractive flathub org.gtk.Gtk3theme.Adwaita-dark
