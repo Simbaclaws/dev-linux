@@ -2,7 +2,7 @@
 
 # --- Prerequisites OpenCV & Other Tools ---
 echo "Installing prerequisites..."
-sudo zypper install -y -l opencv cmake gcc-c++ python313-numpy wget unzip ffmpeg gtk3-devel libpng16-devel libtiff-devel libwebp-devel libopenssl-devel clang-devel alsa-devel yt-dlp rust cargo git
+sudo zypper install -y -l opencv cmake gcc-c++ python313-numpy wget unzip ffmpeg gtk3-devel libpng16-devel libtiff-devel libwebp-devel libopenssl-devel clang-devel alsa-devel yt-dlp rust cargo git ffmpeg-6-libavutil-devel
 
 # --- Install Cargo Tools ---
 echo "Installing tplay via cargo..."
