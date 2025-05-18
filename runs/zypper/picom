@@ -10,10 +10,9 @@ git clone https://github.com/PCRE2Project/pcre2.git $HOME/pcre
 # Build pcre
 cd $HOME/pcre 
 git submodule update --init
-./configure
-make
+cmake -B build .
+cmake --build build/
 sudo make install
-
 # Get picom with animations
 git clone https://gitlab.com/phyos/picom.git $HOME/picom
 
