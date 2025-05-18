@@ -13,6 +13,9 @@ git submodule update --init
 ./configure
 make
 sudo make install
+
+sudo ln -sf /usr/bin/aclocal /usr/bin/aclocal-1.16
+
 # Get picom with animations
 git clone https://gitlab.com/phyos/picom.git $HOME/picom
 
