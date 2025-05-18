@@ -1,52 +1,7 @@
 #!/bin/bash
 
-# Set default version
-version="v0.10.2" # Or use "stable" or "nightly" for tags
-
-# If $NVIM_VERSION is set, use its value
-if [ -n "$NVIM_VERSION" ]; then
-    version="$NVIM_VERSION"
-fi
-
-echo "Neovim version to install: \"$version\""
-
-# Check if Neovim is already cloned
-if [ ! -d "$HOME/neovim" ]; then
-    echo "Cloning Neovim repository..."
-    git clone https://github.com/neovim/neovim.git "$HOME/neovim"
-else
-    echo "Neovim repository already exists at $HOME/neovim."
-fi
-
-# Install Dependencies for Arch Linux
-# base-devel group includes make, gcc, etc.
-# ninja is recommended for faster builds.
-echo "Installing dependencies for Neovim..."
-sudo pacman -S --noconfirm --needed base-devel cmake gettext ninja fd git unzip curl
-
-# Fetch and checkout the specified version
-echo "Fetching all tags and checking out version: $version..."
-git -C "$HOME/neovim" fetch --all --tags --prune
-git -C "$HOME/neovim" checkout "$version"
-
-# Get the number of CPU cores on your system
-num_cores=$(nproc)
-echo "Using $num_cores CPU cores for build."
-
-# Build and install neovim
-echo "Building Neovim..."
-make -C "$HOME/neovim" clean
-# Using Ninja for the build as it's often faster
-make -C "$HOME/neovim" CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local" -j"$num_cores"
-echo "Installing Neovim..."
-sudo make -C "$HOME/neovim" install -j"$num_cores"
-
-# Remove neovim folder after it's installed
-echo "Removing Neovim source directory..."
-rm -rf "$HOME/neovim"
-
-# Remove personal folder before installing anything
-# rm -rf $HOME/personal
+echo "Installing Neovim"
+sudo pacman -S --noconfirm --needed neovim base-devel cmake gettext ninja fd git unzip curl
 
 # Clone additional repositories
 #git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
