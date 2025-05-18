@@ -7,8 +7,7 @@ sudo pacman -S --noconfirm --needed git base-devel
 # onefetch and lsd might be in official repos or AUR. asciiquarium is typically in AUR.
 # Assuming yay is installed for AUR packages.
 echo "Installing fun tools (some may come from AUR)..."
-sudo pacman -S --noconfirm --needed \
-    yt-dlp bashtop neofetch htop glances cbonsai cmatrix lsd onefetch
+sudo pacman -S --noconfirm --needed yt-dlp bashtop neofetch htop glances cbonsai cmatrix lsd onefetch
 yay -S --noconfirm --needed asciiquarium
 
 # Install somafm cli
