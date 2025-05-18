@@ -35,6 +35,9 @@ The following distro's have been tested:
 ![Fedora Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_fedora.png)
 
 ### - OpenSuse Tumbleweed (semi-working)
+
+On tumbleweed I haven't yet figured out how to build the st terminal configuration and the asciicam.
+
 ![Tumbleweed Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_tumbleweed.png)
 
 ## Neovim Configuration
@@ -43,10 +46,30 @@ I'm still learning how to use neovim, so please be gentle when judging my config
 I'm taking inspiration from [ThePrimeagen](https://github.com/ThePrimeagen/) as well as [Josean](https://github.com/josean-dev/dev-environment-files)
 
 ### - Neovim (semi-working)
+
+I still have some errors in my configuration, and I haven't done everything I wanted to yet.
+
 ![Neovim Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/neovim.png)
 
-## Issues
+## Fun
 
-### - OpenSuse Tumbleweed
+Some things are just fun in the terminal, which is why I included them in the repo.
 
-On tumbleweed I haven't yet figured out how to build the st terminal configuration and the asciicam.
+### - Asciicam (working)
+![Asciicam](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/asciicam.png)
+
+### - Asciiquarium (working)
+![Asciiquarium](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/asciiquarium.png)
+
+### - CBonsai (working)
+![Cbonsai](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/cbonsai.png)
+
+### - CMatrix (working)
+![CMatrix](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/cmatrix.png)
+
+## IRC
+
+I added a terminal based IRC client as well.
+
+### - Irssi (working)
+![Irssi](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/irssi.png)
