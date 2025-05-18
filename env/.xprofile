@@ -7,3 +7,4 @@ nm-applet &
 redshift &
 feh --bg-fill ~/OneDrive/Pictures/Wallpapers/OS/$DISTRO_WALLPAPER &
 dash ~/.config/scripts/bar.sh &
+/usr/libexec/polkit-mate-authentication-agent-1 &
