@@ -23,11 +23,7 @@ sudo pacman -Syu
 
 # Install System76 software
 echo "Installing System76 software components..."
-sudo pacman -S --noconfirm --needed \
-    system76-firmware-daemon \
-    system76-power \
-    system76-dkms
-    # system76-driver is a meta-package on Pop!_OS; components are installed directly here.
+sudo pacman -S --noconfirm --needed system76-firmware-daemon system76-power system76-dkms
 
 # Install NVIDIA drivers (Arch Linux way)
 echo "For NVIDIA graphics, please install the appropriate drivers manually."

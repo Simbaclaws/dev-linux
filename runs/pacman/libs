@@ -2,10 +2,5 @@
 
 sudo pacman -Syu --noconfirm scrot bat zip pulsemixer pulseaudio-utils gcc unzip curl wget git ca-certificates ripgrep xclip jq tldr shutter python-pip shellcheck mpv ffmpeg brotli p7zip meson ninja
 
-mkdir -P $HOME/personal/fzf
-
-git clone https://github.com/junegunn/fzf.git $HOME/personal/fzf
-$HOME/personal/fzf/install
-
 mkdir -p ~/.local/bin
 ln -s /usr/bin/bat ~/.local/bin/bat
