@@ -2,13 +2,23 @@
 
 # Install dependencies for picom
 # Package names are openSUSE equivalents
-sudo zypper install -y -l libXext-devel libxcb-devel libpixman-1-0-devel dbus-1-devel libconfig-devel Mesa-libGL-devel libpcre libevdev-devel uthash-devel libev-devel xcb-util-image-devel xcb-util-renderutil-devel libX11-devel meson ninja git
+sudo zypper install -y -l cmake-full libXext-devel libxcb-devel libpixman-1-0-devel dbus-1-devel libconfig-devel Mesa-libGL-devel libevdev-devel uthash-devel libev-devel xcb-util-image-devel xcb-util-renderutil-devel libX11-devel meson ninja git
+
+# Setup pcre (doesn't exist in repo opensuse)
+git clone https://github.com/PCRE2Project/pcre2.git $HOME/pcre
+
+# Build pcre
+cd $HOME/pcre 
+git submodule update --init
+./configure
+make
+sudo make install
 
 # Get picom with animations
 git clone https://gitlab.com/phyos/picom.git $HOME/picom
 
 # Build picom
-cd $HOME/picom || exit
+cd $HOME/picom
 git submodule update --init --recursive
 meson --buildtype=release . build
 ninja -C build
