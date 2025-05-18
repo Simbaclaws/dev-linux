@@ -80,7 +80,7 @@ source "$HOME/.cargo/env"
 
 # --- Tauri Dependencies ---
 echo "Installing Tauri dependencies for openSUSE..."
-sudo zypper install -y -l libwebkit2gtk-4_1-devel curl wget file libX11-devel libXrandr-devel libXi-devel libXtst-devel libxdo-devel libopenssl-devel libappindicator3-devel librsvg-devel dbus-1-glib-devel gtk3-devel
+sudo zypper install -y -l webkit2-gtk4-devel curl wget file libX11-devel libXrandr-devel libXi-devel libXtst-devel xdotool libopenssl-devel libappindicator3-devel librsvg-devel dbus-1-glib-devel gtk3-devel
 sudo zypper install -y -l -t pattern devel_basis devel_C_C++
 
 # --- Tauri App & CLI ---
