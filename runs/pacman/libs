@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sh $DEV_ENV_HOME/dev/runs/pacman/aur
+sh $DEV_ENV_HOME/runs/pacman/aur
 
 sudo pacman -Syu --noconfirm scrot bat zip pulsemixer gcc unzip curl wget git ca-certificates ripgrep xclip jq tldr python-pip shellcheck mpv ffmpeg brotli p7zip meson ninja
 
