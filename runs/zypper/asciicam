@@ -2,7 +2,7 @@
 
 # --- Prerequisites OpenCV & Other Tools ---
 echo "Installing prerequisites..."
-sudo zypper install -y -l cmake gcc-c++ wget unzip ffmpeg-6-devel gtk3-devel libjpeg8-devel libpng16-devel libtiff-devel libwebp-devel libopenssl-devel clang-devel alsa-devel yt-dlp rust cargo git
+sudo zypper install -y -l cmake gcc-c++ wget unzip ffmpeg gtk3-devel libjpeg8-devel libpng16-devel libtiff-devel libwebp-devel libopenssl-devel clang-devel alsa-devel yt-dlp rust cargo git
 
 # --- OpenCV Installation from Source ---
 OPENCV_VERSION="4.11.0"
