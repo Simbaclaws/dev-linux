@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 export DEV_ENV_HOME="/home/simbaclaws/dev"
 alias ls="lsd"
+export PATH="$HOME/.cargo/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . "/home/simbaclaws/.deno/env"
 export NVM_DIR="$HOME/.nvm"
