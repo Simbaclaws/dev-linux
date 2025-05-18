@@ -1,51 +1,8 @@
 #!/bin/bash
 
-# Set default version
-version="v0.10.2" # Or use "stable" or "nightly" for tags
-
-# If $NVIM_VERSION is set, use its value
-if [ -n "$NVIM_VERSION" ]; then
-    version="$NVIM_VERSION"
-fi
-
-echo "Neovim version to install: \"$version\""
-
-if [ ! -d "$HOME/neovim" ]; then
-    echo "Cloning Neovim repository..."
-    git clone https://github.com/neovim/neovim.git "$HOME/neovim"
-else
-    echo "Neovim repository already exists at $HOME/neovim."
-fi
-
 # Install Dependencies for openSUSE
-echo "Installing dependencies for Neovim..."
-sudo zypper install --non-interactive -y \
-    cmake gcc-c++ make ninja gettext-tools libtool autoconf automake \
-    fd git unzip curl
-
-# Fetch and checkout the specified version
-echo "Fetching all tags and checking out version: $version..."
-git -C "$HOME/neovim" fetch --all --tags --prune
-git -C "$HOME/neovim" checkout "$version"
-
-num_cores=$(nproc)
-echo "Using $num_cores CPU cores for build."
-
-echo "Building Neovim..."
-make -C "$HOME/neovim" clean
-make -C "$HOME/neovim" CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local" -j"$num_cores"
 echo "Installing Neovim..."
-sudo make -C "$HOME/neovim" install -j"$num_cores"
-
-echo "Removing Neovim source directory..."
-rm -rf "$HOME/neovim"
-
-# Remove personal folder before installing anything
-# rm -rf $HOME/personal
-
-# Clone additional repositories
-#git clone https://github.com/Theprimeagen/harpoon.git "$HOME/personal/harpoon"
-# ... (other clones)
+sudo zypper install -l cmake gcc-c++ make ninja gettext-tools libtool autoconf automake fd git unzip curl neovim
 
 echo "Neovim installation process complete."
 

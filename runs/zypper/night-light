@@ -1,5 +1,5 @@
 #!/bin/sh
 
 # Install redshift
-sudo zypper install --non-interactive redshift redshift-gtk
+sudo zypper install -l redshift redshift-gtk
 

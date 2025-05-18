@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Install Notification Daemon (dunst)
-sudo zypper install --non-interactive dunst
+sudo zypper install -l dunst

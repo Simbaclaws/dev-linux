@@ -7,7 +7,7 @@ if [ -z "$DEV_ENV_HOME" ]; then
 fi
 
 # Install wallpaper software, imagick and ffmpeg
-sudo zypper install -y feh ffmpeg ImageMagick # ImageMagick is often the package name on zypper systems
+sudo zypper install -l feh ffmpeg ImageMagick
 
 XPROFILE_FILE="$DEV_ENV_HOME/env/.xprofile"
 

@@ -8,11 +8,8 @@ fi
 
 # Install dependencies
 # patterns-devel-base-devel_basis for build-essential
-sudo zypper install --non-interactive -y \
-    rofi libxkbcommon-x11-devel xterm libXft-devel harfbuzz-devel gd-devel \
-    libX11-devel libXinerama-devel libwebkit2gtk-4_1-devel dash imlib2-devel \
-    xorg-x11-server-devel # Provides X11 dev headers
-sudo zypper install --non-interactive -y -t pattern devel_basis devel_C_C++
+sudo zypper install -l rofi libxkbcommon-x11-devel xterm libXft-devel harfbuzz-devel gd-devel libX11-devel libXinerama-devel libwebkit2gtk-4_1-devel dash imlib2-devel xorg-x11-server-devel
+sudo zypper install -l -t pattern devel_basis devel_C_C++
 
 # Get CPU Core count
 num_cores=$(nproc)

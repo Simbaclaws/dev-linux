@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Install vpn software
-sudo zypper install --non-interactive wireguard-tools
+sudo zypper install -l wireguard-tools
