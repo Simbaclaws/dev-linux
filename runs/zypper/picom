@@ -10,7 +10,8 @@ git clone https://github.com/luvit/pcre.git $HOME/pcre
 # Build pcre
 cd $HOME/pcre 
 git submodule update --init
-./configure
+sudo mkdir -p /usr/lib/libpcre
+./configure --libdir=/usr/lib/libpcre/
 sudo ln -sf /usr/bin/automake /usr/bin/automake-1.16
 sudo ln -sf /usr/bin/aclocal /usr/bin/aclocal-1.16/configure
 make
