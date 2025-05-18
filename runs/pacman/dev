@@ -2,7 +2,7 @@
 
 # --- GitHub CLI ---
 echo "Installing GitHub CLI..."
-sudo pacman -S --noconfirm --needed gh
+sudo pacman -S --noconfirm --needed github-cli
 
 # --- Development Stuff ---
 echo "Installing core development tools..."
