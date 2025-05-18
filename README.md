@@ -26,7 +26,8 @@ Some parts of it are pretty nice, I like the visual appeal.
 The following distro's have been tested:
 
 ### - Pop OS (working)
-
+I don't yet have a wallpaper for pop os. There are wallpapers for different OS'es under the wallpapers folder.
+Preferably I get all of them working, but that's just a dream.
 
 ### - Ubuntu (working)
 ![Ubuntu Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_ubuntu.png)
@@ -73,3 +74,16 @@ I added a terminal based IRC client as well.
 
 ### - Irssi (working)
 ![Irssi](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/irssi.png)
+
+## Resource Monitors
+
+I installed some resource monitors to look at.
+
+### - Htop (working)
+![Htop](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/htop.png)
+
+### - Glances (working)
+![Glances](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/glances.png)
+
+### - Bashtop (working)
+![Bashtop](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/bashtop.png)
