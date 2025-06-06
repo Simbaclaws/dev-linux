@@ -9,7 +9,7 @@ return {
       -- follow latest release.
       version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
       -- install jsregexp (optional!).
-      build =  "clang -IC:\\Users\\hylke\\AppData\\Local\\nvim-data\\lazy\\LuaSnip\\deps\\lua51_include\\ -O2 -c C:\\Users\\hylke\\AppData\\local\\nvim-data\\lazy\\LuaSnip\\deps\\jsregexp\\jsregexp.c -o C:\\Users\\hylke\\AppData\\local\\nvim-data\\lazy\\LuaSnip\\jsregexp.o"
+      build = "make install_jsregexp"
     },
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
