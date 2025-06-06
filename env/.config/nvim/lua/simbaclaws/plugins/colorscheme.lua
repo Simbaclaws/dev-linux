@@ -81,7 +81,5 @@ return {
         },
       }
 
-      -- Load the colorscheme
-      vim.cmd('colorscheme material')
     end,
 }
