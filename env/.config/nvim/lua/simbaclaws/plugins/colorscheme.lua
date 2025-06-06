@@ -1,8 +1,10 @@
 return {
-    "marko-cerovac/material.nvim",             --- Radium Colorscheme
-    lazy = false,
-    priority = 1000,
+    "marko-cerovac/material.nvim",
+    init = function ()
+      vim.g.material_style = 'deep ocean'
+    end,
     config = function()
+      local colors = require("material.colors")
       require('material').setup {
         contrast = {
           terminal = false,
@@ -50,10 +52,36 @@ return {
 
         custom_colors = nil,
         
-        custom_highlights = {},
+        custom_highlights = {
+          DiagnosticVirtualTextError = {
+            fg = colors.lsp.error,
+            bg = colors.main.black,
+            italic = true,
+          },
+          DiagnosticVirtualTextHint = {
+            fg = colors.lsp.hint,
+            bg = colors.main.black,
+            italic = true,
+          },
+          DiagnosticVirtualTextInfo = {
+            fg = colors.lsp.info,
+            bg = colors.main.black,
+            italic = true,
+          },
+          DiagnosticVirtualTextOk = {
+            fg = colors.lsp.info,
+            bg = colors.main.black,
+            italic = true,
+          },
+          DiagnosticVirtualTextWarn = {
+            fg = colors.lsp.warning,
+            bg = colors.main.black,
+            italic = true,
+          },
+        },
       }
+
       -- Load the colorscheme
-      vim.g.material_style = "deep ocean"
       vim.cmd('colorscheme material')
     end,
 }
