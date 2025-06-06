@@ -53,7 +53,6 @@ return {
         custom_highlights = {},
       }
       -- Load the colorscheme
-      require('material').load()
       vim.g.material_style = "deep ocean"
       vim.cmd('colorscheme material')
     end,
