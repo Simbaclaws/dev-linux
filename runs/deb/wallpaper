@@ -19,6 +19,7 @@ if [ -f /etc/os-release ]; then
 
     case "$OS_PRIMARY_ID" in
         ubuntu) TARGET_WALLPAPER="od_ubuntu.png" ;;
+        pop) TARGET_WALLPAPER="od_popos.png" ;;
         debian) TARGET_WALLPAPER="od_debian.png" ;;
         fedora) TARGET_WALLPAPER="od_fedora.png" ;;
         arch) TARGET_WALLPAPER="od_arch.png" ;;
