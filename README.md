@@ -48,13 +48,14 @@ Follow the entire installation process until the end.
 
 Reboot the machine afterwards, then at the gdm login screen, change the DE to DWM and login.
 
+Afterwards, run the script again (I know... I have to fix this...)
+
 ## Tested Distributions
 
 The following distro's have been tested:
 
 ### - Pop OS (working)
-I don't yet have a wallpaper for pop os. There are wallpapers for different OS'es under the wallpapers folder.
-Preferably I get all of them working, but that's just a dream.
+![Pop OS Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_pop_os.png)
 
 ### - Ubuntu (working)
 ![Ubuntu Setup](https://raw.githubusercontent.com/simbaclaws/dev-linux/main/examples/tested_ubuntu.png)
