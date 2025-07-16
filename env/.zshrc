@@ -118,6 +118,4 @@ bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^q "cht\n"
 
 # Run tmux session on each shell startup, only if it's non nested.
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+[ -z "$TMUX" ] && { exec tmux new-session && exit; }
