@@ -9,5 +9,5 @@ read -p "GIMMIE YOUR QUERY: " query
 if echo "$languages" | grep -qs $selected; then
   tmux split-window -v bash -c "curl cht.sh/$selected/$(echo "$query" | tr " " "+") | less"
 else
-  tmux split-window -v bash -c "curl cht.sh/$selected~$query | more"
+  tmux split-window -v bash -c "curl cht.sh/$selected~$query | less"
 fi
