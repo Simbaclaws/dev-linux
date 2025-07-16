@@ -115,3 +115,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval `ssh-agent -s` &> /dev/null;
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^s "cht\n"
